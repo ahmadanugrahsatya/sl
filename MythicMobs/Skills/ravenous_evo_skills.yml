@@ -1,0 +1,147 @@
+Blade_Slash_Evo:
+  Cooldown: 0
+  Conditions:
+  - crouching false
+  - hasaurastacks{auraName=Shadow_Walk_Evo} castinstead Blade_Slash_Evo_CRIT
+  - hasaura{n=ATTACK_CD} false
+  Skills:
+  - randomskill{skills=Blade_Slash_Evo_1,Blade_Slash_Evo_2,Blade_Slash_Evo_3,Blade_Slash_Evo_4}
+
+Blade_Slash_Evo_1:
+  Skills:
+  - effect:sound{s=assassin_sounds:samus.blade_slash;volume=0.8;pitch=1} @self
+  - totem{md=2;c=1;oH=Assassin_Slash_DAMAGE;hnp=true;hp=true;hR=1;vR=1;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Blade_Slash_Evo_1;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=4;y=0.3;lockpitch=true}
+  
+Blade_Slash_Evo_2:
+  Skills:
+  - effect:sound{s=assassin_sounds:samus.blade_slash;volume=0.8;pitch=1} @self
+  - totem{md=2;c=1;oH=Assassin_Slash_DAMAGE;hnp=true;hp=true;hR=1;vR=1;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Blade_Slash_Evo_2;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=4;y=-0.5;lockpitch=true}
+  
+Blade_Slash_Evo_3:
+  Skills:
+  - effect:sound{s=assassin_sounds:samus.blade_slash;volume=0.8;pitch=1} @self
+  - totem{md=2;c=1;oH=Assassin_Slash_DAMAGE;hnp=true;hp=true;hR=1;vR=1;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Blade_Slash_Evo_3;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=4;y=0.3;so=-0.5;lockpitch=true}
+  
+Blade_Slash_Evo_4:
+  Skills:
+  - effect:sound{s=assassin_sounds:samus.blade_slash;volume=0.8;pitch=1} @self
+  - totem{md=2;c=1;oH=Assassin_Slash_DAMAGE;hnp=true;hp=true;hR=1;vR=1;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Blade_Slash_Evo_4;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=4;y=-0.5;so=-0.5;lockpitch=true}
+  
+Blade_Slash_Evo_DAMAGE:
+  TargetConditions:
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - Aura{auraName=ATTACK_CD;duration=2} @self
+  - damage{a="<modifier.damage>";pkb=false;hnp=true;hp=true}
+  - skill{s=BLEED_FX_80} 0.15
+  
+Blade_Slash_Evo_CRIT:
+  Skills:
+  - effect:sound{s=assassin_sounds:samus.blade_critical;volume=0.9;pitch=1} @self
+  - totem{md=2;c=1;oH=Blade_Slash_Evo_CRIT_DAMAGE;hnp=true;hp=true;hR=1;vR=1;i=1} @forward{f=1}
+  - summon{type=Blade_Slash_Evo_3;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=4;y=0.3;so=-0.5;lockpitch=true}
+  - summon{type=Blade_Slash_Evo_4;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=4;y=-0.5;so=-0.5;lockpitch=true}
+  - potionclear{} @self
+  - auraremove{aura=Shadow_Walk_Evo} @self
+  - effect:particles{particle=reddust;amount=30;hS=0.4;vS=1;speed=0;#acebe2} @self
+  
+Blade_Slash_Evo_CRIT_DAMAGE:
+  TargetConditions:
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - Aura{auraName=ATTACK_CD;duration=2} @self
+  - damage{a="<modifier.damage> * 2";pkb=false;hnp=true;hp=true}
+  - skill{s=BLEED_FX_80}
+  
+Shadow_Walk_Evo:
+  Conditions:
+  - hasaurastacks{auraName=Shadow_Walk_Evo_aura} castinstead Shadow_Walk_Evo_Skill
+  Skills:
+  - Aura{auraName=Shadow_Walk_Evo_aura;interval=1;duration=5} @self
+  
+Shadow_Walk_Evo_Skill:
+  Cooldown: 7
+  Skills:
+  - effect:sound{s=assassin_sounds:samus.shadow_walk;volume=1;pitch=1} @self
+  - effect:particles{particle=reddust;amount=30;hS=0.4;vS=1;speed=0;color=#acebe2} @self
+  - Aura{auraName=Shadow_Walk_Evo;interval=1;duration="<modifier.duration> * 20"} @self
+  - summon{type=Shadow_Walk_Evo;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - hidefromplayers{d="<modifier.duration> * 20"} @PIR{r=100}
+  - potion{type=INVISIBILITY;duration="<modifier.duration> * 20";level=1;hasParticles=false} @self
+  - potion{type=SPEED;duration="<modifier.duration> * 20";level=2;hasParticles=false} @self
+  
+Clear_Shadow_Walk_Evo:
+  Skills:
+  - potionclear{} @self
+  - auraremove{aura=Shadow_Walk_Evo} @self
+  - effect:particles{particle=reddust;amount=30;hS=0.4;vS=1;speed=0;color=#acebe2} @self
+  
+Ravenous_Surge:
+  Conditions:
+  - crouching false
+  - hasaura{n=God_Of_Death} false
+  Skills:
+  - onDamaged{auraName=Ravenous_Surge;cancelEvent=true;d=25} @self
+  - effect:sound{s=entity.wither.ambient;volume=0.8;pitch=1.5} @self
+  - potion{type=INVISIBILITY;duration=25;level=1;hasParticles=false} @self
+  - potion{type=SPEED;duration=25;level=2;hasParticles=false} @self
+  - effect:particles{particle=redstone;color=#4bb599;amount=15;hS=0.35;vS=0.8;y=0.6;speed=0;forwardOffset=0;sideOffset=0;repeat=7;repeati=3} @self
+  - effect:particles{particle=redstone;color=#afe4a4;amount=15;hS=0.35;vS=0.8;y=0.6;speed=0;forwardOffset=0;sideOffset=0;repeat=7;repeati=3} @self
+  - hide{d=25} @Server
+  - projectile{onHit=Ravenous_Surge_T;v=35;i=1;hR=1;vR=1;mr=10;hnp=true;hO=0;sE=true;hs=false;hfs=0;sfo=0.5;syo=1.5;tyo=1.5} @Forward{f=15;y=0}
+  - delay 10
+  - effect:sound{s=reaper_sounds:samus.cross_slash;volume=0.8;pitch=1} @self
+  - summon{type=Ravenous_Surge;amount=1;radius=0;yRadius=0} @forward{f=2.5;y=0;lockpitch=true}
+  - totem{md=2;c=1;oH=Ravenous_Surge_DAMAGE;hnp=true;hp=true;hR=2.5;vR=2.5;i=1} @forward{f=0.5;lockpitch=true}
+
+Ravenous_Surge_T:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - propel{v=2.3;delay=1}
+  
+Ravenous_Surge_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Conditions:
+  - hasaura{n=Soul_Collector_5_STACKS} false
+  Skills:
+  - damage{a="<modifier.damage>";pkb=true;hnp=true;hp=true;delay=1}
+  - throw{velocity=12;velocityY=0}
+  - Aura{auraName=ATTACK_CD;duration=3} @self
+  
+Ravenous_Laceration:
+  Conditions:
+  - crouching true
+  - hasaurastacks{auraName=Forbidden_Art} false
+  Skills:
+  - potion{type=SPEED;duration=80;level=3;hasParticles=false} @self
+  - effect:sound{s=ninja_samurai_sounds:samus.laceration;volume=0.8;pitch=1;delay=5} @self
+  - Aura{auraName=Ravenous_Laceration;duration=25} @self
+  - onDamaged{auraName=resist;d=12;cE=true} @self
+  - lunge{velocity=1.15;velocityY=0.05;repeat=3;repeatinterval=1} @forward{f=12;y=0.05;lockpitch=true}
+  - delay 4
+  - skill{s=Ravenous_Laceration_DAMAGE} @EIR{r=4;sort=NEAREST;limit=1}
+  - delay 5
+  - summon{type=Ravenous_Laceration_Dash;amount=1;radius=0;yRadius=0} @forward{f=0;y=0;lockpitch=true}
+  - summon{type=Ravenous_Laceration_Slash;amount=1;radius=0;yRadius=0} @forward{f=2;y=0.5;lockpitch=true}
+  
+Ravenous_Laceration_DAMAGE:
+  TargetConditions:
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  - entitytype{t=armorstands} false
+  Skills:
+  - Aura{auraName=ATTACK_CD;duration=2;repeat=4;repeatinterval=5;delay=20} @self
+  - damage{a="<modifier.damage>";pkb=true;hnp=true;hp=true;repeat=4;repeatinterval=5;delay=20}
+  - throw{velocity=0;velocityY=1.5;delay=20}
+  - summon{type=Blood_Cut1;amount=1;radius=0;yRadius=0;onSurface=true;delay=20}
+  - summon{type=Blood_Cut2;amount=1;radius=0;yRadius=0;onSurface=true;delay=25}
+  - summon{type=Blood_Cut3;amount=1;radius=0;yRadius=0;onSurface=true;delay=30}
+  - summon{type=Blood_Cut1;amount=1;radius=0;yRadius=0;onSurface=true;delay=35}
+  - effect:sound{s=ninja_samurai_sounds:samus.blood_cut;volume=0.8;pitch="random(0.8, 1.1)";repeat=4;repeatinterval=5;delay=20} @self

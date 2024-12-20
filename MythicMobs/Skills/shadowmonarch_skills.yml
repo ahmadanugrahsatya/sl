@@ -1,0 +1,70 @@
+Shadow_Dragon:
+  Cooldown: 10
+  Conditions:
+  - crouching true
+  Skills:
+  - Aura{auraName=Shadow_Dragon_aura;duration=140} @self
+  - effect:sound{s=shadowmancer_sounds:samus.shadow_summon;volume=1;pitch=1} @self
+  - effect:sound{s=shadowmancer_sounds:samus.shadow_dragon_growl;volume=1;pitch=1;delay=10} @self
+  - summon{type=Shadow_Dragon;amount=1;radius=0;yRadius=0;onSurface=true} @selflocation
+  - effect:sound{s=shadowmancer_sounds:samus.shadow_disappear;volume=1;pitch=1;delay=140} @self
+  - skill{s=Shadow_Dragon_Breathe_Fire;repeat=13;repeatinterval=10}
+  - remove{delay=140} @MountedModel
+  - signal{s=END;delay=140} @MountedModel
+  
+Shadow_Dragon_NOMOUNT:
+  Conditions:
+  - ModelHasDriver false
+  Skills:
+  - auraremove{aura=Shadow_Dragon_aura} @Owner
+  - remove{delay=1} @self
+  
+Shadow_Dragon_Flap:
+  Skills:
+  - effect:sound{s=entity.ender_dragon.flap;volume=0.7;pitch=1.1} @self
+  
+  
+  
+Shadow_Dragon_Breathe_Fire:
+  Conditions:
+  - hasaurastacks{auraName=Shadow_Dragon_aura} true
+  - hasaurastacks{auraName=Shadow_Dragon_ON} true
+  Skills:
+  - state{s=breath} @MountedModel
+  - Aura{auraName=Shadow_Dragon_OPEN;duration=15} @MountedModel
+  - totem{md=2;c=1;oH=Shadow_Dragon_Breathe_Fire_HIT;hnp=true;hp=true;hR=1;vR=1;i=1;repeat=1;repeatinterval=10} @forward{f=4;y=-1.5}
+  - totem{md=2;c=1;oH=Shadow_Dragon_Breathe_Fire_HIT;hnp=true;hp=true;hR=1;vR=1;i=1;repeat=1;repeatinterval=10} @forward{f=6.5;y=-1.5}
+  
+  - delay 20
+  - state{s=breath;remove=true} @MountedModel
+
+  
+Shadow_Dragon_Breathe_Fire_TICK:
+  Skills:
+  - effect:particles{particle=redstone;color=#19191c;amount=23;hS=1;vS=0.5;speed=0;forwardOffset=0;sideOffset=0} @origin
+  - effect:particles{particle=redstone;color=#2c5252;amount=7;hS=1;vS=0.5;speed=0;forwardOffset=0;sideOffset=0} @origin
+  
+Shadow_Dragon_Breathe_Fire_HIT:
+  Skills:
+   - skill{s=Shadow_Dragon_Breathe_Fire_HIT_D} @EntitiesNearOrigin{r=4}
+   
+Shadow_Dragon_Breathe_Fire_HIT_D:
+  Skills:
+  - damage{a=2}
+  
+  
+Shadow_Dragon_Breathe_Fire_SKILLCAST:
+  Conditions:
+  - hasaurastacks{auraName=Shadow_Dragon_OPEN} true
+  Skills:
+  - skill{s=Shadow_Dragon_Breathe_Fire_SKILL} @ModelPart{p=head}
+  
+Shadow_Dragon_Breathe_Fire_SKILL:
+  Skills:
+  - projectile{sfo=2;fromorigin=true;onTick=Shadow_Dragon_Breathe_Fire_TICK;v=30;i=1;hR=1;vR=1;mr=5;hnp=true;hO=0;sE=false;sB=false;hs=false;hfs=0;syo=1;tyo=1} @Forward{f=10;y=0}
+  - skill{s=Shadow_Dragon_Breathe_Fire_SKILLS}
+  
+Shadow_Dragon_Breathe_Fire_SKILLS:
+  Cooldown: 0.7
+  Skills:
+  - effect:sound{s=shadowmancer_sounds:samus.shadow_dragon_fire;volume=0.7;pitch=1} @self

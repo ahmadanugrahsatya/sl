@@ -1,0 +1,153 @@
+Sacred_Slice:
+  Cooldown: 0.5
+  Conditions:
+  - crouching false
+  Skills:
+  - lunge{velocity=0.5;velocityY=0;repeat=0;repeatinterval=0} @forward{f=0;y=0;lockpitch=true}
+  - effect:sound{s=diligence_sounds:samus.sacred_slice;volume=1;pitch=1} @self
+  - summon{type=Sacred_Slice;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=7;y=0;lockpitch=true}
+  - totem{md=2;c=1;oH=Sacred_Slice_DAMAGE;hnp=true;hp=true;hR=2;vR=1;i=1;repeat=3;repeatinterval=2} @forward{f=2;lockpitch=true}
+  
+Sacred_Slice_DAMAGE:
+  Skills:
+  - damage{a=2;pkb=false;hnp=true;hp=true}
+
+Aerial_Of_Lance:
+  Cooldown: 0
+  Skills:
+  - lunge{velocity=5;velocityY=0.2} @forward{f=12;y=0.1}
+  - summon{type=Aerial_Of_Lance;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - summon{type=Aerial_Of_Lance_rotated;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - summon{type=ground_crack_debris;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - effect:sound{s=diligence_sounds:samus.angel_dashes;volume=1;pitch=1} @self
+  - effect:particles{particle=flash;hS=2;vS=1;y=0.6;speed=0;forwardOffset=0;sideOffset=0} @self
+  
+Olkalilre_Of_Lance:
+  Cooldown: 0
+  Conditions:
+  - crouching true
+  Skills:
+  - summon{type=Olkalilre_Of_Lance;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0;lockpitch=true}
+  - summon{type=Olkalilre_Impact;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0;lockpitch=true}
+  - effect:particlering{particle=flash;radius=9;points=260;amount=1;hS=0;vS=0;y=0.1;delay=8} @self ~onSpawn
+  - orbital{onTick=Olkalilre_Of_Lance_FX;r=1;points=20;i=1;duration=200;oy=0.5;rx=4;ry=0;rz=0;avx=0;avy=0;avz=0} @self
+  - orbital{onTick=Olkalilre_Of_Lance_FX;r=1;points=20;i=1;duration=200;oy=0.5;rx=-4;ry=0;rz=0;avx=0;avy=0;avz=0} @self
+  - effect:sound{s=diligence_sounds:samus.olkalilre;volume=1;pitch=1} @self
+  - totem{md=2;c=1;oH=Olkalilre_Of_Lance_DAMAGE;hnp=true;hp=true;hR=2;vR=50;i=1;repeat=3;repeatinterval=2} @forward{f=2;lockpitch=true}
+  
+Olkalilre_Of_Lance_FX:
+  Skills:
+  - effect:particles{particle=redstone;color=#6cb7df;amount=2;hS=0.1;vS=0.1;speed=0;y=0.7} @origin
+  - effect:particles{particle=redstone;color=#6cb7df;amount=2;hS=0.1;vS=0.1;speed=0;y=0.7} @origin
+    
+Olkalilre_Of_Lance_FX:
+  Skills:
+  - effect:particles{particle=redstone;color=#6cb7df;amount=2;hS=0.1;vS=0.1;speed=0;y=0.7} @origin
+  - effect:particles{particle=redstone;color=#6cb7df;amount=2;hS=0.1;vS=0.1;speed=0;y=0.7} @origin
+  
+Olkalilre_Of_Lance_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - consume{d=20;pkb=true;delay=11}
+  
+Sacred_Sling:
+  Conditions:
+  - hasaurastacks{auraName=Sacred_Sling_aura} castinstead Sacred_Sling_SKILL
+  Skills:
+  - Aura{auraName=Sacred_Sling_aura;interval=1;duration=5} @self
+
+Sacred_Sling_SKILL:
+  Cooldown: 7
+  Skills:
+  - summon{type=Sacred_Sling;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0;lockpitch=true}
+  - effect:sound{s=diligence_sounds:samus.sacred_slice;volume=1;pitch=1} @self
+  - projectile{onHit=Sacred_Sling_hit;v=21;i=1;hR=1;vR=1;mr=7;hnp=true;hO=0;sE=true;hs=false;hfs=0;sfo=0.5;syo=0.8;tyo=0.8} @Forward{f=15;y=0}
+  
+Sacred_Sling_hit:
+  Skills:
+  - skill{s=Sacred_Sling_Target} @EntitiesNearOrigin{r=2;limit=1;sort=NEAREST}
+  
+Sacred_Sling_Target:
+  Skills:
+  - Aura{auraName=ATTACK_CD;duration=2} @self
+  - damage{a=5}
+  - pull{velocity=7}
+
+  
+Baroness_Of_Lance:
+  Conditions:
+  - crouching true
+  Skills:
+  - orbital{bulletType=MOB;mob=Baroness_Of_Lance3;hr=1;vr=1;hp=false;hnp=false;r=0;points=1;i=1;duration=20;oy=1.5;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0} @self
+  - delay 9
+  - lunge{velocity=0.01;velocityY=1.15;repeat=4;repeatinterval=1} @forward{f=0;y=5;lockpitch=true}
+  - effect:sound{s=diligence_sounds:samus.angel_dashes;volume=1;pitch=1} @self
+  - totem{md=2;c=1;oH=Baroness_Of_Lance_DAMAGE_D3;hnp=true;hp=true;hR=2;vR=2;i=1} @forward{f=3;lockpitch=true}
+  - orbital{bulletType=MOB;mob=Baroness_Of_3_ULT;hr=1;vr=1;hp=false;hnp=false;r=0;points=1;i=1;duration=16;oy=1.5;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0} @self
+  
+  - stun{d=10;f=false;CancelOnTakeDamage=false;CancelOnDeath=true;delay=7} @self
+  
+  - delay 12
+  
+  - effect:sound{s=diligence_sounds:samus.olkalilre;volume=1;pitch=1} @self
+  - lunge{velocity=0.9;velocityY=-1.5;repeat=4;repeatinterval=1} @forward{f=3;y=-5;lockpitch=true}
+  - onDamaged{auraName=landresists;d=20;cE=true} @self
+  - projectile{bulletType=MOB;mob=Baroness_Of_Lance_PRO;onHitBlockSkill=Baroness_Of_Lance_HIT_D;v=35;i=1;hR=1;vR=1;mr=30;hnp=true;hO=0;sE=false;sB=true;hs=false;hfs=0;sfo=0;syo=5;tyo=0} @Forward{f=15;y=-20;lockpitch=true}
+
+Baroness_Of_Lance_HIT_D:
+  Skills:
+  - summon{type=Baroness_Of_Lance4;amount=1;radius=0;yRadius=0;onSurface=true} @ProjectileForward{f=5;y=6}
+  - effect:sound{s=diligence_sounds:samus.baroness;volume=1;pitch=1} @origin
+  - summon{type=Blue_Rupture;amount=1;radius=0;yRadius=0;onSurface=true} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=1;points=10;amount=1;hS=0;vS=0;y=0.1} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=2;points=30;amount=1;hS=0;vS=0;y=0.1;delay=1} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=3;points=50;amount=1;hS=0;vS=0;y=0.1;delay=2} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=4;points=80;amount=1;hS=0;vS=0;y=0.1;delay=3} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=5;points=110;amount=1;hS=0;vS=0;y=0.1;delay=4} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=6;points=150;amount=1;hS=0;vS=0;y=0.1;delay=5} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=7;points=190;amount=1;hS=0;vS=0;y=0.1;delay=6} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=8;points=220;amount=1;hS=0;vS=0;y=0.1;delay=7} @ProjectileForward{f=2;y=1.8}
+  - effect:particlering{particle=redstone;color=#6cb7df;radius=9;points=260;amount=1;hS=0;vS=0;y=0.1;delay=8} @ProjectileForward{f=2;y=1.8}
+  - summon{type=Aerial_Of_Lance;amount=1;radius=0;yRadius=0;onSurface=true} @ProjectileForward{f=2;y=1.8}
+  - summon{type=Aerial_Of_Lance_rotated;amount=1;radius=0;yRadius=0;onSurface=true} @ProjectileForward{f=2;y=1.8}
+  - skill{s=Baroness_Of_Lance_HIT} @EntitiesNearOrigin{r=8}
+  - effect:particles{particle=flash;amount=1;hS=0;vS=0;y=0.2;speed=0.2;forwardOffset=0;sideOffset=0} @ProjectileForward{f=2;y=1.8}
+
+  
+Baroness_Of_Lance_HIT:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - hasaura{n=Baroness_Of_Lance_HIT} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - Aura{auraName=Baroness_Of_Lance_HIT;duration=5}
+  - damage{a=7 * 2;pkb=true;hnp=true;hp=true;delay=1}
+  - throw{velocity=5;velocityY=-12}
+  - delay 5
+  - potion{type=SLOW;duration="<modifier.duration> * 20";level=50;hasParticles=false}
+  
+Baroness_Of_Lance_DAMAGE_D:
+  Skills:
+  - skill{s=Baroness_Of_Lance_DAMAGE} @EntitiesNearOrigin{r=7}
+  
+Baroness_Of_Lance_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - damage{a=7;pkb=true;hnp=true;hp=true;delay=1}
+  - throw{velocity=10;velocityY=2}
+  
+Baroness_Of_Lance_DAMAGE_D3:
+  Skills:
+  - skill{s=Permafrost_Lance_DAMAGE3} @EntitiesNearOrigin{r=7}
+  
+Baroness_Of_Lance_DAMAGE3:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - damage{a="<modifier.damage>";pkb=true;hnp=true;hp=true;delay=1}
+  - throw{velocity=0;velocityY=9}

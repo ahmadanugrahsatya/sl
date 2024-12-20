@@ -1,0 +1,212 @@
+info:
+  namespace: elitecreatures
+armors_rendering:
+  darkflame_animated_weapon_set:
+    color: '#8c196a'
+    layer_1: darkflame_animated_weapon_set/darkflame_armor_layer_1
+    layer_2: darkflame_animated_weapon_set/darkflame_armor_layer_2
+    use_color: false
+items:
+  darkflame_animated_weapon_set_helmet:
+    display_name: Darkflame Helmet
+    resource:
+      material: DIAMOND_HELMET
+      generate: true
+      textures:
+      - darkflame_animated_weapon_set/darkflame_helmet.png
+    specific_properties:
+      armor:
+        slot: head
+        custom_armor: darkflame_animated_weapon_set
+  darkflame_animated_weapon_set_chestplate:
+    display_name: Darkflame Chestplate
+    resource:
+      generate: true
+      textures:
+      - darkflame_animated_weapon_set/darkflame_chestplate.png
+    specific_properties:
+      armor:
+        slot: chest
+        custom_armor: darkflame_animated_weapon_set
+  darkflame_animated_weapon_set_leggings:
+    display_name: Darkflame Leggings
+    resource:
+      generate: true
+      textures:
+      - darkflame_animated_weapon_set/darkflame_leggings.png
+    specific_properties:
+      armor:
+        slot: legs
+        custom_armor: darkflame_animated_weapon_set
+  darkflame_animated_weapon_set_boots:
+    display_name: Darkflame Boots
+    resource:
+      generate: true
+      textures:
+      - darkflame_animated_weapon_set/darkflame_boots.png
+    specific_properties:
+      armor:
+        slot: FEET
+        custom_armor: darkflame_animated_weapon_set
+  darkflame_animated_weapon_set_axe:
+    display_name: Axe
+    permission: elitecreatures.use
+    resource:
+      material: STICK
+      generate: false
+      model_path: darkflame_animated_weapon_set/axe
+  darkflame_animated_weapon_set_bow:
+    display_name: Bow
+    permission: elitecreatures.use
+    resource:
+      material: BOW
+      generate: false
+      model_path: darkflame_animated_weapon_set/bow
+  darkflame_animated_weapon_set_chest:
+    display_name: Chest
+    permission: elitecreatures.use
+    resource:
+      material: PAPER
+      generate: false
+      model_path: darkflame_animated_weapon_set/chest
+    behaviours:
+      furniture:
+        solid: true
+        fixed_rotation: true
+        entity: armor_stand
+        hitbox:
+          length: 1
+          width: 1
+          height: 1
+          length_offset: 0
+          width_offset: 0
+          height_offset: 0
+        placeable_on:
+          walls: false
+          ceiling: false
+          floor: true
+  darkflame_animated_weapon_set_chest_opening:
+    display_name: Chest Opening
+    permission: elitecreatures.use
+    resource:
+      material: PAPER
+      generate: false
+      model_path: darkflame_animated_weapon_set/chest_opening
+    behaviours:
+      furniture:
+        solid: true
+        fixed_rotation: true
+        entity: armor_stand
+        hitbox:
+          length: 1
+          width: 1
+          height: 1
+          length_offset: 0
+          width_offset: 0
+          height_offset: 0
+        placeable_on:
+          walls: false
+          ceiling: false
+          floor: true
+  darkflame_animated_weapon_set_fishing_rod:
+    display_name: Fishing Rod
+    permission: elitecreatures.use
+    resource:
+      material: FISHING_ROD
+      generate: false
+      model_path: darkflame_animated_weapon_set/fishing_rod
+  darkflame_animated_weapon_set_gauntlet:
+    display_name: Gauntlet
+    permission: elitecreatures.use
+    resource:
+      material: PAPER
+      generate: false
+      model_path: darkflame_animated_weapon_set/gauntlet
+  darkflame_animated_weapon_set_helmet_2:
+    display_name: Helmet 2
+    permission: elitecreatures.use
+    resource:
+      material: PAPER
+      generate: false
+      model_path: darkflame_animated_weapon_set/helmet
+    behaviours:
+      hat: true
+  darkflame_animated_weapon_set_hoe:
+    display_name: Hoe
+    permission: elitecreatures.use
+    resource:
+      material: IRON_HOE
+      generate: false
+      model_path: darkflame_animated_weapon_set/hoe
+  darkflame_animated_weapon_set_key:
+    display_name: Key
+    permission: elitecreatures.use
+    resource:
+      material: PAPER
+      generate: false
+      model_path: darkflame_animated_weapon_set/key
+  darkflame_animated_weapon_set_mace:
+    display_name: Mace
+    permission: elitecreatures.use
+    resource:
+      material: IRON_AXE
+      generate: false
+      model_path: darkflame_animated_weapon_set/mace
+  darkflame_animated_weapon_set_pickaxe:
+    display_name: Pickaxe
+    permission: elitecreatures.use
+    resource:
+      material: IRON_PICKAXE
+      generate: false
+      model_path: darkflame_animated_weapon_set/pickaxe
+  darkflame_animated_weapon_set_shield:
+    display_name: Shield
+    permission: elitecreatures.use
+    resource:
+      material: SHIELD
+      generate: false
+      model_path: darkflame_animated_weapon_set/shield
+  darkflame_animated_weapon_set_shovel:
+    display_name: Shovel
+    permission: elitecreatures.use
+    resource:
+      material: IRON_SHOVEL
+      generate: false
+      model_path: darkflame_animated_weapon_set/shovel
+  darkflame_animated_weapon_set_sickle:
+    display_name: Sickle
+    permission: elitecreatures.use
+    resource:
+      material: IRON_SHOVEL
+      generate: false
+      model_path: darkflame_animated_weapon_set/sickle
+  darkflame_animated_weapon_set_spear:
+    display_name: Spear
+    permission: elitecreatures.use
+    resource:
+      material: IRON_SWORD
+      generate: false
+      model_path: darkflame_animated_weapon_set/spear
+  darkflame_animated_weapon_set_staff:
+    display_name: Staff
+    permission: elitecreatures.use
+    resource:
+      material: IRON_SWORD
+      generate: false
+      model_path: darkflame_animated_weapon_set/staff
+  darkflame_animated_weapon_set_sword:
+    display_name: Sword
+    permission: elitecreatures.use
+    resource:
+      material: IRON_SWORD
+      generate: false
+      model_path: darkflame_animated_weapon_set/sword
+  darkflame_animated_weapon_set_wing:
+    display_name: Wing
+    permission: elitecreatures.use
+    resource:
+      material: PAPER
+      generate: false
+      model_path: darkflame_animated_weapon_set/wing
+
+# 1089082226493481686108383

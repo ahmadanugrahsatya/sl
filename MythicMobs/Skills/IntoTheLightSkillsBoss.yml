@@ -1,0 +1,543 @@
+LH1:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 5
+   - offgcd true
+   Skills:
+   - gcd{ticks=75}
+   - state{state=attack} @Self
+   - setspeed{s=0} @self
+   - delay 40
+   - sound{s=entity.player.attack.sweep;p=0.9;v=1} @Self
+   - sound{s=entity.player.attack.sweep;p=0.8;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=1;vY=10;delay=2} @EIC{r=5.5}
+   - delay 25
+   - setspeed{s=0.9} @self
+LH2:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 5
+   - offgcd true
+   Skills:
+   - gcd{ticks=75}
+   - state{state=attack2} @Self
+   - setspeed{s=0} @self
+   - delay 35
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=10;vY=1;delay=2} @EIC{r=5.5}
+   - delay 25
+   - setspeed{s=0.9} @self
+LH3:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 5
+   - offgcd true
+   Skills:
+   - gcd{ticks=75}
+   - state{state=attack3} @Self
+   - setspeed{s=0} @self
+   - delay 65
+   - setspeed{s=0.9} @self
+LH4:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 5
+   - offgcd true
+   Skills:
+   - gcd{ticks=105}
+   - state{state=attack4} @Self
+   - setspeed{s=0} @self
+   - delay 35
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=10;vY=1;delay=2} @EIC{r=5.5}
+   - delay 35
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=10;vY=1;delay=2} @EIC{r=5.5}
+   - delay 25
+   - setspeed{s=0.9} @self
+LH5:
+   Cooldown: 10
+   Conditions:
+   - targetWithin 10
+   - offgcd true
+   Skills:
+   - gcd{ticks=60}
+   - setspeed{s=0} @self
+   - state{state=attack5} @Self
+   - setAI{ai=false;delay=12} @self
+   - delay 40
+   - setAI{ai=true} @self
+   - setspeed{s=0.9} @self
+LH6:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 7
+   - offgcd true
+   Skills:
+   - gcd{ticks=70}
+   - state{state=attack6} @Self
+   - setspeed{s=0} @self
+   - delay 38
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=7.5;a=20}
+   - stun{d=35} @EIC{r=7.5;a=20}
+   - delay 15
+   - setspeed{s=0.9} @self
+LH7:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 30
+   - offgcd true
+   Skills:
+   - gcd{ticks=75}
+   - state{state=attack7} @Self
+   - setspeed{s=0} @self
+   - delay 35
+   - sound{s=entity.illusioner.mirror_move;p=1.2;v=2} @Self
+   - teleport{spreadh=6;spreadv=0} @target
+   - delay 20
+   - setspeed{s=0.9} @self
+LH8:
+   Cooldown: 0
+   Conditions:
+   - damagecause{cause=PROJECTILE} true
+   Skills:
+   - cancelevent
+   - state{state=reflect} @Self
+LK1:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 6
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack} @Self
+   - setspeed{s=0} @self
+   - delay 12
+   - sound{s=entity.player.attack.sweep;p=0.9;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=6}
+   - throw{v=12;vY=2;delay=2} @EIC{r=6}
+   - delay 30
+   - setspeed{s=0.9} @self
+LK2:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 6
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack2} @Self
+   - setspeed{s=0} @self
+   - delay 18
+   - sound{s=entity.player.attack.sweep;p=0.9;v=1} @Self
+   - sound{s=entity.player.attack.sweep;p=0.8;v=1} @Self
+   - damage{a=18;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=1;vY=10;delay=2} @EIC{r=6}
+   - delay 25
+   - setspeed{s=0.9} @self
+LK3:
+   Cooldown: 10
+   Conditions:
+   - targetWithin 5
+   - offgcd true
+   Skills:
+   - gcd{ticks=115}
+   - state{state=attack3} @Self
+   - setspeed{s=0} @self
+   - delay 12	
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=10;vY=1;delay=2} @EIC{r=5.5}
+   - delay 24
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=10;vY=1;delay=2} @EIC{r=5.5}
+   - delay 30
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5.5}
+   - throw{v=10;vY=1;delay=2} @EIC{r=5.5}
+   - delay 25
+   - setspeed{s=0.9} @self
+LK4:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 8
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack4} @Self
+   - setspeed{s=0} @self
+   - delay 17
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=7.5;a=20}
+   - stun{d=35} @EIC{r=7.5;a=20}
+   - delay 20
+   - setspeed{s=0.9} @self
+LK5:
+   Cooldown: 8
+   Conditions:
+   - targetWithin 7
+   - offgcd true
+   Skills:
+   - gcd{ticks=85}
+   - state{state=attack5} @Self
+   - setspeed{s=0} @self
+   - delay 75
+   - setspeed{s=0.9} @self
+LK6:
+   Cooldown: 8
+   Conditions:
+   - targetWithin 10
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack6} @Self
+   - setspeed{s=0} @self
+   - setAI{ai=false;delay=12} @self
+   - delay 35
+   - setAI{ai=true} @self
+   - setspeed{s=0.9} @self
+LK8:
+   Cooldown: 8
+   Conditions:
+   - targetWithin 10
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack8} @Self
+   - delay 8
+   - setspeed{s=3} @self
+   - delay 22
+   - sound{s=entity.player.attack.knockback;p=0.5;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=4}
+   - throw{v=9;vY=15;delay=2} @EIC{r=4}
+   - setspeed{s=0} @self
+   - setspeed{s=0.9;delay=15} @self
+LK9:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 40
+   - targetnotwithin{d=5} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=80}
+   - state{state=attack9} @Self
+   - setAI{ai=false} @self
+   - effect:particles{particle=flash;amount=1;hS=0;vS=0;y=4;speed=0;delay=30}
+   - sound{s=item.armor.equip_netherite;p=1.2;v=0.8;delay=3;repeat=4;repeatinterval=4} @Self
+   - delay 30
+   - throw{v=20;vY=3} @PIR{r=5}
+   - sound{s=entity.firework_rocket.blast;p=1.8;v=5} @Self
+   - sound{s=block.amethyst_cluster.hit;p=1.3;v=4} @Self
+   - sendtitle{title="♟";d=60;fo=40} @PIR{r=45}
+   - delay 35
+   - setAI{ai=true} @self
+LK10:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 14
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack10} @Self
+   - setspeed{s=0} @self
+   - delay 15
+   - setspeed{s=3} @self
+   - damage{a=5;pi=true;repeat=3;repeatinterval=3} @PIR{r=4}
+   - delay 10
+   - setspeed{s=0} @self
+   - sound{s=entity.player.attack.sweep;p=1.1;v=1} @Self
+   - damage{a=15;pi=true;pk=true} @EIC{r=5}
+   - throw{v=9;vY=18;delay=2} @EIC{r=5}
+   - delay 15
+   - setspeed{s=0.9} @self
+LK11:
+   Cooldown: 15
+   Conditions:
+   - targetWithin 20
+   - targetnotwithin{d=6} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=59}
+   - state{state=attack11} @Self
+   - setspeed{s=0} @Self
+   - delay 30
+   - projectile{
+      oT=[
+      
+      ];oH=[
+         - stun{d=40}
+         - summon{type=Spear2;amount=1;radius=0;os=true;yr=0}
+      ];bullet=MOB;mob=Spear;v=21;i=0.1;hR=0.5;vR=0.5;sE=true;sB=true;g=0.1;syo=5;tyo=1.5;eso=0;hnp=true} @target
+   - setspeed{s=0.9;delay=25} @Self
+LK12:
+   Cooldown: 15
+   Conditions:
+   - targetWithin 10
+   - targetnotwithin{d=5} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=135}
+   - state{state=attack12} @Self
+   - setspeed{s=0} @self
+   - setAI{ai=false;delay=20} @self
+   - sound{s=item.armor.equip_netherite;p=1.2;v=0.8;delay=3;repeat=4;repeatinterval=4} @Self
+   - sound{s=block.fire.extinguish;p=0;v=2;delay=50;repeat=12;repeatinterval=2} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=50} @Self
+   - effect:particles{particle=flash;amount=1;hS=0;vS=0;speed=0;repeat=12;repeatinterval=2;delay=50} @modelpart{mid=herald_of_light_phase_2;pid=b_beam_damage_1}
+   - effect:particles{particle=lava;amount=5;hS=0.3;vS=0.1;speed=0;repeat=12;repeatinterval=2;delay=50} @modelpart{mid=herald_of_light_phase_2;pid=b_beam_damage_1}  
+   - delay 125
+   - setAI{ai=true} @self
+   - setspeed{s=0.9} @self
+LK13:
+   Cooldown: 15
+   Conditions:
+   - targetWithin 8
+   - targetnotwithin{d=4} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=135}
+   - state{state=attack13} @Self
+   - setspeed{s=0} @self
+   - setAI{ai=false;delay=20} @self
+   - sound{s=block.fire.extinguish;p=0;v=2;delay=50;repeat=20;repeatinterval=2} @Self
+   - sound{s=block.fire.extinguish;p=0;v=2;delay=50;repeat=20;repeatinterval=2} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=50} @Self
+   - sound{s=item.armor.equip_netherite;p=1.2;v=0.8;delay=3;repeat=4;repeatinterval=4} @Self
+   - effect:particles{particle=flash;amount=1;hS=0;vS=0;speed=0;repeat=20;repeatinterval=2;delay=50} @modelpart{mid=herald_of_light_phase_2;pid=b_beam_damage_1}
+   - effect:particles{particle=lava;amount=5;hS=0.3;vS=0.1;speed=0;repeat=20;repeatinterval=2;delay=50} @modelpart{mid=herald_of_light_phase_2;pid=b_beam_damage_1}
+   - effect:particles{particle=flash;amount=1;hS=0;vS=0;speed=0;repeat=20;repeatinterval=2;delay=50} @modelpart{mid=herald_of_light_phase_2;pid=b_beam_damage_2}
+   - effect:particles{particle=lava;amount=5;hS=0.3;vS=0.1;speed=0;repeat=20;repeatinterval=2;delay=50} @modelpart{mid=herald_of_light_phase_2;pid=b_beam_damage_2}    
+   - delay 125
+   - setAI{ai=true} @self
+   - setspeed{s=0.9} @self
+LC1:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 40
+   - targetnotwithin{d=4} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=50}
+   - state{state=attack} @Self
+   - setAI{ai=false} @self
+   - effect:particles{particle=flash;amount=1;hS=0;vS=0;y=5;speed=0;delay=15}
+   - sound{s=item.armor.equip_netherite;p=1.2;v=0.8;delay=3;repeat=4;repeatinterval=4} @Self
+   - delay 15
+   - throw{v=20;vY=3} @PIR{r=5}
+   - sound{s=entity.firework_rocket.blast;p=1.8;v=5} @Self
+   - sound{s=block.amethyst_cluster.hit;p=1.3;v=4} @Self
+   - sendtitle{title="♟";d=60;fo=40} @PIR{r=45}
+   - delay 35
+   - setAI{ai=true} @self
+LC2:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 40
+   - targetnotwithin{d=10} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack2} @Self
+   - setspeed{s=0} @self
+   - delay 20
+   - sound{s=entity.illusioner.mirror_move;p=1.2;v=2} @Self
+   - teleport{spreadh=6;spreadv=0} @target
+   - delay 20	
+   - setspeed{s=0.4} @self
+LC2_2:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 40
+   - offgcd true
+   Skills:
+   - gcd{ticks=55}
+   - state{state=attack2} @Self
+   - setspeed{s=0} @self
+   - delay 20
+   - sound{s=entity.illusioner.mirror_move;p=1.2;v=2} @Self
+   - disengage{v=5} @target
+   - delay 20	
+   - setspeed{s=0.4} @self
+LC3:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 40
+   - offgcd true
+   Skills:
+   - gcd{ticks=45}
+   - state{state=attack3} @Self
+   - setspeed{s=0} @self
+   - delay 20
+   - throw{v=25;vY=4} @PIR{r=6}
+   - projectile{
+      oT=[
+      
+      ];oH=[
+         - damage{a=22} 
+      ];bullet=MOB;mob=LightProjectile;v=22;i=0.1;hR=1;vR=0.01;sE=false;sB=true;g=0;syo=3;tyo=1.4;eso=0;hnp=true} @Ring{r=5;p=15} 
+   - delay 15	
+   - setspeed{s=0.4} @self
+LC4:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 8
+   - offgcd true
+   Skills:
+   - gcd{ticks=75}
+   - state{state=attack4} @Self
+   - setspeed{s=0} @self
+   - setspeed{s=0.4;delay=55} @self
+LC5:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 12
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=55}
+   - state{state=attack5} @Self
+   - delay 35
+   - setspeed{s=0.4} @self
+LW1:
+   Cooldown: 2
+   Conditions:
+   - targetWithin 4
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=30}
+   - state{state=attack} @Self
+   - delay 10
+   - sound{s=entity.player.attack.sweep;p=1.3;v=1} @Self
+   - damage{a=8;pi=true} @EIC{r=3.5}
+   - delay 10
+   - setspeed{s=0.9} @self
+LW2:
+   Cooldown: 2
+   Conditions:
+   - targetWithin 4
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=30}
+   - state{state=attack2} @Self
+   - delay 10
+   - sound{s=entity.player.attack.sweep;p=1.3;v=1} @Self
+   - damage{a=8;pi=true} @EIC{r=3.5}
+   - delay 10
+   - setspeed{s=0.9} @self
+LW3:
+   Cooldown: 2
+   Conditions:
+   - targetWithin 4
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=30}
+   - state{state=attack3} @Self
+   - delay 10
+   - sound{s=entity.player.attack.sweep;p=1.3;v=1} @Self
+   - damage{a=8;pi=true} @EIC{r=3.5}
+   - delay 10
+   - setspeed{s=0.9} @self
+LC6:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 40
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=180}
+   - potion{type=DAMAGE_RESISTANCE;duration=160;level=100} @self
+   - state{state=attack6} @Self
+   - setspeed{s=0.4;delay=165} @self
+   - delay 40
+   - summon{type=LightWarrior;amount=1;radius=6;os=true;yr=0;repeat=4;repeatinterval=25} @PIR{r=50}
+LC6_2:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 40
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=180}
+   - potion{type=DAMAGE_RESISTANCE;duration=160;level=100} @self
+   - state{state=attack6} @Self
+   - setspeed{s=0.4;delay=165} @self
+   - delay 40
+   - summon{type=Beam1;amount=2;radius=4;os=true;yr=0;repeat=10;repeatinterval=15} @PIR{r=50}
+   - summon{type=Beam2;amount=1;radius=0;os=true;yr=0} @PIR{r=50}
+   - summon{type=Beam2;amount=1;radius=0;os=true;yr=0;delay=50} @PIR{r=50}
+LC7:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 8
+   - offgcd true
+   Skills:
+   - gcd{ticks=220}
+   - sound{s=block.fire.extinguish;p=0;v=2;delay=23;repeat=80;repeatinterval=2} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=23} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=80} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=130} @Self
+   - state{state=attack7} @Self
+   - setAI{ai=false} @self 
+   - setAI{ai=true;delay=200} @self
+LC8:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 22
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=135}
+   - sound{s=block.fire.extinguish;p=0;v=2;delay=43;repeat=20;repeatinterval=3} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=40} @Self
+   - state{state=attack8} @Self
+   - setspeed{s=0.4;delay=130} @self
+LC9:
+   Cooldown: 20
+   Conditions:
+   - targetWithin 22
+   - offgcd true
+   Skills:
+   - setspeed{s=0} @self
+   - gcd{ticks=150}
+   - sound{s=block.fire.extinguish;p=0;v=2;delay=63;repeat=20;repeatinterval=3} @Self
+   - sound{s=block.beacon.ambient;p=2;v=2;delay=60} @Self
+   - setAI{ai=false} @self 
+   - setAI{ai=true;delay=135} @self ~onSpawn
+   - state{state=attack9} @Self
+   - setspeed{s=0.4;delay=145} @self
+LC10:
+   Cooldown: 5
+   Conditions:
+   - targetWithin 40
+   - targetnotwithin{d=10} true
+   - offgcd true
+   Skills:
+   - gcd{ticks=45}
+   - state{state=attack10} @Self
+   - setspeed{s=0} @self
+   - delay 28
+   - sound{s=entity.illusioner.mirror_move;p=1.2;v=2} @Self
+   - teleport{spreadh=6;spreadv=0} @target
+   - delay 10	
+   - setspeed{s=0.4} @self
+LC11:
+   Cooldown: 10
+   Conditions:
+   - targetWithin 20
+   - offgcd true
+   Skills:
+   - gcd{ticks=120} 
+   - state{state=attack11} @Self
+   - setspeed{s=2.5;delay=20} @self
+   - setspeed{s=0.4;delay=100} @self
+   
+
+#IkbKp2UIVndvFkczIHODdUQFdEV3FEVNJTUE1UNjRlTwsGRjZlVyIjcSxEUqtmTvZWaixUO

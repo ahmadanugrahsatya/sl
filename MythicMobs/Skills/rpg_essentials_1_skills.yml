@@ -1,0 +1,1527 @@
+
+CancelEventSkill:
+  Skills:
+  - CancelEvent
+  
+Object_Look:
+  TriggerConditions:
+  - crouching true
+  - haspermission{p=*} true
+  Skills:
+  - look{headOnly=false;immediately=false;repeat=5;repeatinterval=2}
+  
+
+Pebble_1:
+  Skills:
+  - model{mid=pebbles_1;n=false;d=false} @self
+  
+Pebble_2:
+  Skills:
+  - model{mid=pebbles_2;n=false;d=false} @self
+  
+Pebble_Random:
+  Skills:
+  - randomskill{skills=Pebble_1,Pebble_2}
+
+Pebble_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=WOODEN_PICKAXE} castinstead Pebble_Hit_REAL
+  - holding{m=STONE_PICKAXE} castinstead Pebble_Hit_REAL
+  - holding{m=IRON_PICKAXE} castinstead Pebble_Hit_REAL
+  - holding{m=GOLDEN_PICKAXE} castinstead Pebble_Hit_REAL
+  - holding{m=DIAMOND_PICKAXE} castinstead Pebble_Hit_REAL
+  - holding{m=NETHERITE_PICKAXE} castinstead Pebble_Hit_REAL
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+  
+Pebble_Hit_REAL:
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=5} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=10;hS=0.25;vS=0.03;y=0.1;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Pebble_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=STONE;amount=10;hS=0.25;vS=0.03;y=0.1;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  - skill{s=Pebble_Drop_Random}
+  
+Pebble_Drop_Random:
+  Skills:
+  - randomskill{skills=Pebble_Drop_1 9,Pebble_Drop_2 1}
+  
+Pebble_Drop_1:
+  Skills:
+  - dropitem{i=rock} @selflocation
+  
+Pebble_Drop_2:
+  Skills:
+  - dropitem{i=rock} @selflocation
+  - dropitem{i=rock} @selflocation
+  
+
+Boulder_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=WOODEN_PICKAXE} castinstead Boulder_Hit_1
+  - holding{m=STONE_PICKAXE} castinstead Boulder_Hit_2
+  - holding{m=IRON_PICKAXE} castinstead Boulder_Hit_3
+  - holding{m=GOLDEN_PICKAXE} castinstead Boulder_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Boulder_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Boulder_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+  
+Boulder_Hit_1: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=7} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Boulder_Hit_2: #3
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=10} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Boulder_Hit_3: #2
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=15} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Boulder_Hit_4: #1
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Boulder_Hit_5: #1
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Boulder_Hit_6: #1
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Boulder_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=STONE;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Boulder_Drop_Random}
+  
+Boulder_Drop_Random:
+  Skills:
+  - randomskill{skills=Boulder_Drop_1 7,Boulder_Drop_2 3}
+  
+Boulder_Drop_1:
+  Skills:
+  - dropitem{i=rock} @selflocation
+  - dropitem{i=rock} @selflocation
+  
+Boulder_Drop_2:
+  Skills:
+  - dropitem{i=rock} @selflocation
+  - dropitem{i=rock} @selflocation
+  - dropitem{i=rock} @selflocation
+  
+
+Ore_Copper_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=WOODEN_PICKAXE} castinstead Ore_Copper_Hit_1
+  - holding{m=STONE_PICKAXE} castinstead Ore_Copper_Hit_2
+  - holding{m=IRON_PICKAXE} castinstead Ore_Copper_Hit_3
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Copper_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Copper_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Copper_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+  
+Ore_Copper_Hit_1: #5
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=20} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Copper_Hit_2: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Copper_Hit_3: #3
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=34} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Copper_Hit_4: #2
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=50} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Copper_Hit_5: #1
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=100} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Copper_Hit_6: #1
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=100} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Copper_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=ORANGE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Copper_Drop_Random}
+  
+Ore_Copper_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Copper_Drop_1 7.5,Ore_Copper_Drop_2 2.5}
+  
+Ore_Copper_Drop_1:
+  Skills:
+  - dropitem{i=bar_copper} @selflocation
+  
+Ore_Copper_Drop_2:
+  Skills:
+  - dropitem{i=bar_copper} @selflocation
+  - dropitem{i=bar_copper} @selflocation
+  
+
+Ore_Iron_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=STONE_PICKAXE} castinstead Ore_Iron_Hit_2
+  - holding{m=IRON_PICKAXE} castinstead Ore_Iron_Hit_3
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Iron_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Iron_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Iron_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+
+Ore_Iron_Hit_2: #5
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=20} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIGHT_GRAY_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Iron_Hit_3: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIGHT_GRAY_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Iron_Hit_4: #3
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=34} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIGHT_GRAY_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Iron_Hit_5: #2
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=50} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIGHT_GRAY_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Iron_Hit_6: #1
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=100} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIGHT_GRAY_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Iron_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=LIGHT_GRAY_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Iron_Drop_Random}
+  
+Ore_Iron_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Iron_Drop_1 7.5,Ore_Iron_Drop_2 2.5}
+  
+Ore_Iron_Drop_1:
+  Skills:
+  - dropitem{i=bar_iron} @selflocation
+  
+Ore_Iron_Drop_2:
+  Skills:
+  - dropitem{i=bar_iron} @selflocation
+  - dropitem{i=bar_iron} @selflocation
+  
+
+Ore_Gold_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=STONE_PICKAXE} castinstead Ore_Gold_Hit_2
+  - holding{m=IRON_PICKAXE} castinstead Ore_Gold_Hit_3
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Gold_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Gold_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Gold_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+  
+Ore_Gold_Hit_2: #6
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=17} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Gold_Hit_3: #5
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=20} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Gold_Hit_4: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Gold_Hit_5: #3
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=34} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Gold_Hit_6: #2
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=50} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Gold_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Gold_Drop_Random}
+  
+Ore_Gold_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Gold_Drop_1 7.5,Ore_Gold_Drop_2 2.5}
+  
+Ore_Gold_Drop_1:
+  Skills:
+  - dropitem{i=bar_gold} @selflocation
+  
+Ore_Gold_Drop_2:
+  Skills:
+  - dropitem{i=bar_gold} @selflocation
+  - dropitem{i=bar_gold} @selflocation
+  
+
+Ore_Diamond_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=IRON_PICKAXE} castinstead Ore_Diamond_Hit_3
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Diamond_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Diamond_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Diamond_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+  
+Ore_Diamond_Hit_3: #6
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=17} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=WHITE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Diamond_Hit_4: #5
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=20} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=WHITE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Diamond_Hit_5: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=WHITE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Diamond_Hit_6: #2
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=50} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=WHITE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Diamond_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=WHITE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Diamond_Drop_Random}
+  
+Ore_Diamond_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Diamond_Drop_1 7.5,Ore_Diamond_Drop_2 2.5}
+  
+Ore_Diamond_Drop_1:
+  Skills:
+  - dropitem{i=bar_diamond} @selflocation
+  
+Ore_Diamond_Drop_2:
+  Skills:
+  - dropitem{i=bar_diamond} @selflocation
+  - dropitem{i=bar_diamond} @selflocation
+  
+
+Ore_Topaz_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=IRON_PICKAXE} castinstead Ore_Topaz_Hit_3
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Topaz_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Topaz_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Topaz_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+
+Ore_Topaz_Hit_3: #7
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=15} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Topaz_Hit_4: #6
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=17} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Topaz_Hit_5: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Topaz_Hit_6: #3
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=34} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Topaz_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=YELLOW_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Topaz_Drop_Random}
+  
+Ore_Topaz_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Topaz_Drop_1 7.5,Ore_Topaz_Drop_2 2.5}
+  
+Ore_Topaz_Drop_1:
+  Skills:
+  - dropitem{i=bar_topaz} @selflocation
+  
+Ore_Topaz_Drop_2:
+  Skills:
+  - dropitem{i=bar_topaz} @selflocation
+  - dropitem{i=bar_topaz} @selflocation
+  
+
+Ore_Sapphire_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Sapphire_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Sapphire_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Sapphire_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+
+Ore_Sapphire_Hit_4: #7
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=15} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=BLUE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Sapphire_Hit_5: #5
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=20} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=BLUE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Sapphire_Hit_6: #4
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=25} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=BLUE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Sapphire_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=BLUE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Sapphire_Drop_Random}
+  
+Ore_Sapphire_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Sapphire_Drop_1 7.5,Ore_Sapphire_Drop_2 2.5}
+  
+Ore_Sapphire_Drop_1:
+  Skills:
+  - dropitem{i=bar_sapphire} @selflocation
+  
+Ore_Sapphire_Drop_2:
+  Skills:
+  - dropitem{i=bar_sapphire} @selflocation
+  - dropitem{i=bar_sapphire} @selflocation
+  
+
+Ore_Emerald_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=GOLDEN_PICKAXE} castinstead Ore_Emerald_Hit_4
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Emerald_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Emerald_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+
+Ore_Emerald_Hit_4: #8
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=13} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIME_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Emerald_Hit_5: #6
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=17} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIME_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Emerald_Hit_6: #5
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=20} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=LIME_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Emerald_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=LIME_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Emerald_Drop_Random}
+  
+Ore_Emerald_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Emerald_Drop_1 7.5,Ore_Emerald_Drop_2 2.5}
+  
+Ore_Emerald_Drop_1:
+  Skills:
+  - dropitem{i=bar_emerald} @selflocation
+  
+Ore_Emerald_Drop_2:
+  Skills:
+  - dropitem{i=bar_emerald} @selflocation
+  - dropitem{i=bar_emerald} @selflocation
+  
+
+Ore_Ruby_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=DIAMOND_PICKAXE} castinstead Ore_Ruby_Hit_5
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Ruby_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+
+Ore_Ruby_Hit_5: #7
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=15} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=RED_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Ruby_Hit_6: #6
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=17} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=RED_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Ruby_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=RED_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Ruby_Drop_Random}
+  
+Ore_Ruby_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Ruby_Drop_1 7.5,Ore_Ruby_Drop_2 2.5}
+  
+Ore_Ruby_Drop_1:
+  Skills:
+  - dropitem{i=bar_ruby} @selflocation
+  
+Ore_Ruby_Drop_2:
+  Skills:
+  - dropitem{i=bar_ruby} @selflocation
+  - dropitem{i=bar_ruby} @selflocation
+  
+
+Ore_Dragonite_Hit:
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  TriggerConditions:
+  - holding{m=NETHERITE_PICKAXE} castinstead Ore_Dragonite_Hit_6
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - sendtitle{title="";subtitle="&cCan't mine with this tool!";d=20;fi=10;fo=10} @trigger
+
+Ore_Dragonite_Hit_6: #7
+  Cooldown: 0.5
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=15} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=PURPLE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.stone.break;volume=1;pitch=1} @self
+  
+Ore_Dragonite_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=PURPLE_STAINED_GLASS;amount=15;hS=0.25;vS=0.25;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.basalt.break;volume=1;pitch=0.6} @self
+  - skill{s=Ore_Dragonite_Drop_Random}
+  
+Ore_Dragonite_Drop_Random:
+  Skills:
+  - randomskill{skills=Ore_Dragonite_Drop_1 7.5,Ore_Dragonite_Drop_2 2.5}
+  
+Ore_Dragonite_Drop_1:
+  Skills:
+  - dropitem{i=bar_dragonite} @selflocation
+  
+Ore_Dragonite_Drop_2:
+  Skills:
+  - dropitem{i=bar_dragonite} @selflocation
+  - dropitem{i=bar_dragonite} @selflocation
+  
+
+Log_Hit:
+  Cooldown: 0.5
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=11} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=OAK_LOG;amount=15;hS=0.2;vS=0.2;y=0.2;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.wood.break;volume=1;pitch=1} @self
+  
+Log_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=OAK_LOG;amount=15;hS=0.2;vS=0.2;y=0.2;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.wood.break;volume=1;pitch=1} @self
+  - skill{s=Log_Drop_Random}
+  
+Log_Drop_Random:
+  Skills:
+  - randomskill{skills=Log_Drop_1 7.5,Log_Drop_2 2.5}
+  
+Log_Drop_1:
+  Skills:
+  - dropitem{i=twig} @selflocation
+  
+Log_Drop_2:
+  Skills:
+  - dropitem{i=twig} @selflocation
+  - dropitem{i=twig} @selflocation
+
+
+Vase_Small_Hit:
+  Cooldown: 0.5
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=120} @self
+  - state{s=hit} @self
+  - effect:particles{particle=block_crack;m=BROWN_STAINED_GLASS;amount=15;hS=0.15;vS=0.15;y=0.15;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.glass.hit;volume=1;pitch=1.1} @self
+  
+Vase_Small_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=BROWN_STAINED_GLASS;amount=15;hS=0.15;vS=0.15;y=0.15;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.glass.break;volume=1;pitch=0.9} @self
+  - skill{s=Vase_Small_Drop_Random}
+  
+Vase_Small_Drop_Random:
+  Skills:
+  - randomskill{skills=Vase_Small_Drop_1 7.5,Vase_Small_Drop_2 2.5}
+  - skill{s=Vase_Small_Key_Drop_RANDOM} 0.1
+  
+Vase_Small_Drop_1:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  
+Vase_Small_Drop_2:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+Vase_Small_Key_Drop_RANDOM:
+  Skills:
+  - randomskill{skills=Vase_Small_Key_Drop_1,Vase_Small_Key_Drop_2,Vase_Small_Key_Drop_3,Vase_Small_Key_Drop_4,Vase_Small_Key_Drop_5,Vase_Small_Key_Drop_6,Vase_Small_Key_Drop_7,Vase_Small_Key_Drop_8,Vase_Small_Key_Drop_9}
+  
+Vase_Small_Key_Drop_1:
+  Skills:
+  - dropitem{i=key_aqua} @selflocation
+  
+Vase_Small_Key_Drop_2:
+  Skills:
+  - dropitem{i=key_bone} @selflocation
+  
+Vase_Small_Key_Drop_3:
+  Skills:
+  - dropitem{i=key_forest} @selflocation
+  
+Vase_Small_Key_Drop_4:
+  Skills:
+  - dropitem{i=key_golden} @selflocation
+  
+Vase_Small_Key_Drop_5:
+  Skills:
+  - dropitem{i=key_ice} @selflocation
+  
+Vase_Small_Key_Drop_6:
+  Skills:
+  - dropitem{i=key_light} @selflocation
+  
+Vase_Small_Key_Drop_7:
+  Skills:
+  - dropitem{i=key_magma} @selflocation
+  
+Vase_Small_Key_Drop_8:
+  Skills:
+  - dropitem{i=key_shadow} @selflocation
+  
+Vase_Small_Key_Drop_9:
+  Skills:
+  - dropitem{i=key_wind} @selflocation
+  
+
+Vase_Common_Hit:
+  Cooldown: 0.5
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=55} @self
+  - state{s=hit} @self
+  - effect:sound{s=block.glass.hit;volume=1;pitch=1} @self
+  
+Vase_Common_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=BROWN_STAINED_GLASS;amount=15;hS=0.2;vS=0.2;y=0.3;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.glass.break;volume=1;pitch=0.7} @self
+  - skill{s=Vase_Common_Drop_Random}
+  - skill{s=Vase_Small_Key_Drop_RANDOM} 0.3
+  
+Vase_Common_Drop_Random:
+  Skills:
+  - randomskill{skills=Vase_Common_Drop_1 6,Vase_Common_Drop_2 3,Vase_Common_Drop_3 1}
+  - dropitem{i=key_wooden} @selflocation 0.5
+  
+Vase_Common_Drop_1:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+Vase_Common_Drop_2:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+Vase_Common_Drop_3:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+
+Vase_Tall_Hit:
+  Cooldown: 0.5
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - damage{a=35} @self
+  - state{s=hit} @self
+  - effect:sound{s=block.glass.hit;volume=1;pitch=0.85} @self
+  
+Vase_Tall_Death:
+  Cooldown: 1
+  Skills:
+  - effect:particles{particle=block_crack;m=BROWN_STAINED_GLASS;amount=20;hS=0.2;vS=0.6;y=0.5;speed=0;forwardOffset=0;sideOffset=0} @self
+  - effect:sound{s=block.glass.break;volume=1;pitch=0.6} @self
+  - skill{s=Vase_Tall_Drop_Random}
+  - skill{s=Vase_Small_Key_Drop_RANDOM} 0.5
+  
+Vase_Tall_Drop_Random:
+  Skills:
+  - randomskill{skills=Vase_Tall_Drop_1 5,Vase_Tall_Drop_2 3,Vase_Tall_Drop_3 1.5,Vase_Tall_Drop_4 0.5}
+  - dropitem{i=key_wooden} @selflocation
+  
+Vase_Tall_Drop_1:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+Vase_Tall_Drop_2:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+Vase_Tall_Drop_3:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+Vase_Tall_Drop_4:
+  Skills:
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  - dropitem{i=coin} @selflocation
+  
+
+Runestone_ACTIVEBUFF:
+  Skills:
+  - sendtitle{title="";subtitle="&cYou already have an active buff!";d=20;fi=10;fo=10} @trigger
+  
+Runestone_COOLDOWN:
+  TriggerConditions:
+  - hasaura{n=Runestone_Speed_ACTUAL} castinstead Runestone_ACTIVEBUFF
+  - hasaura{n=Runestone_Strength_ACTUAL} castinstead Runestone_ACTIVEBUFF
+  - hasaura{n=Runestone_Resistance_ACTUAL} castinstead Runestone_ACTIVEBUFF
+  Skills:
+  - sendtitle{title="";subtitle="&cStill on cooldown!";d=20;fi=10;fo=10} @trigger
+  
+Runestone_Speed_Activate:
+  Cooldown: 3
+  TriggerConditions:
+  - hasaura{n=Runestone_Speed_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Heal_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Strength_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Resistance_COOLDOWN} castinstead Runestone_COOLDOWN
+  Skills:
+  - state{s=hit} @self
+  - delay 10
+  - effect:sound{s=entity.illusioner.prepare_blindness;volume=1;pitch=1} @self
+  - potion{type=SPEED;duration=300;level=1;hasParticles=false} @trigger
+  - Aura{auraName=Runestone_Speed_ACTUAL;duration=300} @trigger
+  - Aura{auraName=Runestone_Speed_COOLDOWN;duration=600} @trigger
+  - orbital{r=1;onTick=Runestone_Speed_TICK;points=20;interval=1;duration=300;oy=0.1} @trigger
+
+Runestone_Speed_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#8dffeb;amount=1;speed=0;hS=0;vS=0} @origin
+  
+Runestone_Strength_Activate:
+  Cooldown: 3
+  TriggerConditions:
+  - hasaura{n=Runestone_Speed_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Heal_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Strength_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Resistance_COOLDOWN} castinstead Runestone_COOLDOWN
+  Skills:
+  - state{s=hit} @self
+  - delay 10
+  - effect:sound{s=entity.illusioner.cast_spell;volume=1;pitch=1} @self
+  - potion{type=INCREASE_DAMAGE;duration=300;level=1;hasParticles=false} @trigger
+  - Aura{auraName=Runestone_Strength_ACTUAL;duration=300} @trigger
+  - Aura{auraName=Runestone_Strength_COOLDOWN;duration=600} @trigger
+  - orbital{r=1;onTick=Runestone_Strength_TICK;points=20;interval=1;duration=300;oy=0.1} @trigger
+
+Runestone_Strength_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#af1010;amount=1;speed=0;hS=0;vS=0} @origin
+  
+Runestone_Resistance_Activate:
+  Cooldown: 3
+  TriggerConditions:
+  - hasaura{n=Runestone_Speed_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Heal_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Strength_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Resistance_COOLDOWN} castinstead Runestone_COOLDOWN
+  Skills:
+  - state{s=hit} @self
+  - delay 10
+  - effect:sound{s=entity.illusioner.prepare_mirror;volume=1;pitch=1} @self
+  - potion{type=DAMAGE_RESISTANCE;duration=300;level=1;hasParticles=false} @trigger
+  - Aura{auraName=Runestone_Resistance_ACTUAL;duration=300} @trigger
+  - Aura{auraName=Runestone_Resistance_COOLDOWN;duration=600} @trigger
+  - orbital{r=1;onTick=Runestone_Resistance_TICK;points=20;interval=1;duration=300;oy=0.1} @trigger
+
+Runestone_Resistance_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#ffec9b;amount=1;speed=0;hS=0;vS=0} @origin
+  
+Runestone_Heal_Activate:
+  Cooldown: 3
+  TriggerConditions:
+  - hasaura{n=Runestone_Speed_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Heal_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Strength_COOLDOWN} castinstead Runestone_COOLDOWN
+  - hasaura{n=Runestone_Resistance_COOLDOWN} castinstead Runestone_COOLDOWN
+  Skills:
+  - state{s=hit} @self
+  - delay 10
+  - effect:sound{s=entity.evoker.prepare_summon;volume=1;pitch=1} @self
+  - heal{a=4;repeat=4;repeati=4} @trigger
+  - feed{amount=4;repeat=4;repeati=4} @trigger
+  - Aura{auraName=Runestone_Heal_ACTUAL;duration=20} @trigger
+  - Aura{auraName=Runestone_Heal_COOLDOWN;duration=600} @trigger
+  - orbital{r=1;onTick=Runestone_Heal_TICK;points=20;interval=1;duration=20;oy=0.1} @trigger
+
+Runestone_Heal_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#73ff6c;amount=1;speed=0;hS=0;vS=0} @origin
+  
+
+Chest_Wooden_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_wooden} castinstead Chest_Wooden_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Wooden_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Wooden_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Wooden_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 0.8
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=twig} @selflocation 0.6
+  - dropitem{i=rock} @selflocation 0.7
+  - dropitem{i=bar_copper} @selflocation 0.3
+  - dropitem{i=bar_iron} @selflocation 0.15
+  - dropitem{i=bar_gold} @selflocation 0.05
+  
+  
+  
+Chest_Golden_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_golden} castinstead Chest_Golden_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Golden_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Golden_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Golden_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 0.9
+  - dropitem{i=coin} @selflocation 0.9
+  - dropitem{i=coin} @selflocation 0.8
+  - dropitem{i=coin} @selflocation 0.7
+  - dropitem{i=coin} @selflocation 0.6
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=bar_iron} @selflocation 0.75
+  - dropitem{i=bar_iron} @selflocation 0.6
+  - dropitem{i=bar_gold} @selflocation 0.5
+  - dropitem{i=bar_iron} @selflocation 0.5
+  - dropitem{i=bar_gold} @selflocation 0.4
+  - dropitem{i=bar_iron} @selflocation 0.75
+  - dropitem{i=bar_iron} @selflocation 0.6
+  - dropitem{i=bar_gold} @selflocation 0.5
+  - dropitem{i=bar_iron} @selflocation 0.5
+  - dropitem{i=bar_gold} @selflocation 0.4
+  - dropitem{i=bar_diamond} @selflocation 0.2
+  - dropitem{i=bar_emerald} @selflocation 0.1
+  - dropitem{i=bar_topaz} @selflocation 0.1
+  - dropitem{i=bar_sapphire} @selflocation 0.05
+  - dropitem{i=bar_diamond} @selflocation 0.2
+  - dropitem{i=bar_emerald} @selflocation 0.1
+  - dropitem{i=bar_topaz} @selflocation 0.1
+  - dropitem{i=bar_sapphire} @selflocation 0.05
+  - dropitem{i=bar_diamond} @selflocation 0.2
+  - dropitem{i=bar_emerald} @selflocation 0.1
+  - dropitem{i=bar_topaz} @selflocation 0.1
+  - dropitem{i=bar_sapphire} @selflocation 0.05
+  
+  - dropitem{i=rune_aqua} @selflocation 0.2
+  - dropitem{i=rune_fire} @selflocation 0.2
+  - dropitem{i=rune_wind} @selflocation 0.2
+  - dropitem{i=rune_nature} @selflocation 0.2
+  - dropitem{i=rune_ice} @selflocation 0.2
+  - dropitem{i=rune_undead} @selflocation 0.2
+  - dropitem{i=rune_light} @selflocation 0.2
+  - dropitem{i=rune_shadow} @selflocation 0.2
+  
+Chest_Aqua_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_aqua} castinstead Chest_Aqua_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Aqua_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Aqua_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Aqua_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_sapphire} @selflocation 1
+  - dropitem{i=bar_sapphire} @selflocation 0.3
+  - dropitem{i=bar_sapphire} @selflocation 0.1
+  - dropitem{i=rune_aqua} @selflocation 1
+  - dropitem{i=rune_aqua} @selflocation 0.3
+  - dropitem{i=rune_aqua} @selflocation 0.1
+  
+Chest_Aqua_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Aqua_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Aqua_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Aqua_FX_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#4568ff;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+  
+Chest_Bone_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_bone} castinstead Chest_Bone_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Bone_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Bone_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Bone_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_iron} @selflocation 1
+  - dropitem{i=bar_iron} @selflocation 0.3
+  - dropitem{i=bar_iron} @selflocation 0.1
+  - dropitem{i=rune_undead} @selflocation 1
+  - dropitem{i=rune_undead} @selflocation 0.3
+  - dropitem{i=rune_undead} @selflocation 0.1
+
+
+Chest_Forest_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_forest} castinstead Chest_Forest_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Forest_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Forest_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Forest_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_emerald} @selflocation 1
+  - dropitem{i=bar_emerald} @selflocation 0.3
+  - dropitem{i=bar_emerald} @selflocation 0.1
+  - dropitem{i=rune_nature} @selflocation 1
+  - dropitem{i=rune_nature} @selflocation 0.3
+  - dropitem{i=rune_nature} @selflocation 0.1
+  
+Chest_Forest_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Forest_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Forest_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Forest_FX_TICK:
+  Skills:
+  - effect:particles{p=totem;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+Chest_Ice_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_ice} castinstead Chest_Ice_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Ice_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Ice_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Ice_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_diamond} @selflocation 1
+  - dropitem{i=bar_diamond} @selflocation 0.3
+  - dropitem{i=bar_diamond} @selflocation 0.1
+  - dropitem{i=rune_ice} @selflocation 1
+  - dropitem{i=rune_ice} @selflocation 0.3
+  - dropitem{i=rune_ice} @selflocation 0.1
+  
+Chest_Ice_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Ice_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Ice_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Ice_FX_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#82f3ff;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+  
+Chest_Light_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_light} castinstead Chest_Light_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Light_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Light_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Light_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_topaz} @selflocation 1
+  - dropitem{i=bar_topaz} @selflocation 0.3
+  - dropitem{i=bar_topaz} @selflocation 0.1
+  - dropitem{i=rune_light} @selflocation 1
+  - dropitem{i=rune_light} @selflocation 0.3
+  - dropitem{i=rune_light} @selflocation 0.1
+  
+Chest_Light_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Light_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Light_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Light_FX_TICK:
+  Skills:
+  - effect:particles{p=end_rod;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+Chest_Magma_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_magma} castinstead Chest_Magma_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Magma_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Magma_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Magma_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_ruby} @selflocation 1
+  - dropitem{i=bar_ruby} @selflocation 0.3
+  - dropitem{i=bar_ruby} @selflocation 0.1
+  - dropitem{i=rune_fire} @selflocation 1
+  - dropitem{i=rune_fire} @selflocation 0.3
+  - dropitem{i=rune_fire} @selflocation 0.1
+  
+Chest_Magma_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Magma_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Magma_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Magma_FX_TICK:
+  Skills:
+  - effect:particles{p=flame;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+Chest_Shadow_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_shadow} castinstead Chest_Shadow_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Shadow_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Shadow_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Shadow_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_dragonite} @selflocation 1
+  - dropitem{i=bar_dragonite} @selflocation 0.3
+  - dropitem{i=bar_dragonite} @selflocation 0.1
+  - dropitem{i=rune_shadow} @selflocation 1
+  - dropitem{i=rune_shadow} @selflocation 0.3
+  - dropitem{i=rune_shadow} @selflocation 0.1
+  
+Chest_Shadow_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Shadow_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Shadow_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Shadow_FX_TICK:
+  Skills:
+  - effect:particles{p=portal;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+
+Chest_Wind_Locked:
+  Cooldown: 1
+  TriggerConditions:
+  - holding{m=key_wind} castinstead Chest_Wind_Open
+  Skills:
+  - sendtitle{title="";subtitle="&cWrong Key!";d=20;fi=10;fo=10} @trigger
+  
+Chest_Wind_Open:
+  Cooldown: 5
+  Skills:
+  - consumeslot{slot=HAND;amount=1} @trigger
+  - state{s=hit} @self
+  - delay 2
+  - effect:sound{s=entity.blaze.hurt;volume=1;pitch=1.3} @self
+  - delay 8
+  - effect:sound{s=block.chest.open;volume=1;pitch=0.9} @self
+  - skill{s=Chest_Wind_Drop}
+  - delay 29
+  - remove @self
+
+Chest_Wind_Drop:
+  Skills:
+  - dropitem{i=coin} @selflocation 1
+  - dropitem{i=coin} @selflocation 0.5
+  - dropitem{i=coin} @selflocation 0.1
+  - dropitem{i=bar_gold} @selflocation 1
+  - dropitem{i=bar_gold} @selflocation 0.3
+  - dropitem{i=bar_gold} @selflocation 0.1
+  - dropitem{i=rune_wind} @selflocation 1
+  - dropitem{i=rune_wind} @selflocation 0.3
+  - dropitem{i=rune_wind} @selflocation 0.1
+  
+Chest_Wind_FX:
+  Skills:
+  - orbital{r=0.75;onTick=Chest_Wind_FX_TICK;points=40;interval=1;duration=40;oy=0.4;rx=0;ry=-0.5;rz=0.5} @modelpart{p=body}
+  - orbital{r=-0.75;onTick=Chest_Wind_FX_TICK;points=-40;interval=1;duration=40;oy=0.4;rx=0;ry=0.5;rz=-0.5} @modelpart{p=body}
+  
+Chest_Wind_FX_TICK:
+  Skills:
+  - effect:particles{p=redstone;color=#ffffff;size=0.75;amount=1;speed=0;hS=0;vS=0} @origin
+  
+
+Barrel_Explosive_Hit:
+  Cooldown: 5
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - state{s=hit} @self
+  - effect:particles{particle=smoke;amount=15;hS=0.1;vS=0.15;y=0;speed=0;forwardOffset=0;sideOffset=0;repeati=5;repeat=11} @modelpart{p=smoke}
+  - effect:particlering{particle=smoke;radius=8;points=100;amount=1;hS=0;vS=0;y=0.1;repeati=5;repeat=11} @self
+  - effect:sound{s=block.fire.extinguish;volume=1;pitch=1} @self
+  - delay 60
+  - effect:sound{s=entity.generic.explode;volume=1;pitch=0.9} @self
+  - effect:particlering{particle=explosion_large;radius=2;points=17;amount=1;hS=0;vS=0;y=0.1} @self
+  - effect:particlering{particle=explosion_large;radius=3;points=17;amount=1;hS=0;vS=0;y=0.1;delay=1} @self
+  - effect:particlering{particle=explosion_large;radius=4;points=17;amount=1;hS=0;vS=0;y=0.1;delay=2} @self
+  - effect:particlering{particle=explosion_large;radius=5;points=17;amount=1;hS=0;vS=0;y=0.1;delay=3} @self
+  - effect:particlering{particle=explosion_large;radius=6;points=17;amount=1;hS=0;vS=0;y=0.1;delay=4} @self
+  - effect:particlering{particle=explosion_large;radius=7;points=17;amount=1;hS=0;vS=0;y=0.1;delay=5} @self
+  - effect:particlering{particle=explosion_large;radius=8;points=17;amount=1;hS=0;vS=0;y=0.1;delay=6} @self
+  - effect:particles{particle=flame;amount=30;hS=2;vS=1;y=0.4;speed=0.2;forwardOffset=0;sideOffset=0} @self
+  - damage{a=10} @EIR{r=8}
+  - partvisibility{p=body;v=false} @self
+  - remove{delay=7} @self
+  
+Barrel_Poison_Hit:
+  Cooldown: 5
+  Conditions:
+  - damagecause{cause=ENTITY_ATTACK} true
+  Skills:
+  - skill{s=CancelEventSkill;sync=true}
+  - state{s=hit} @self
+  - effect:particles{particle=smoke;amount=15;hS=0.1;vS=0.15;y=0;speed=0;forwardOffset=0;sideOffset=0;repeati=5;repeat=11} @modelpart{p=smoke}
+  - effect:particlering{particle=smoke;radius=6;points=100;amount=1;hS=0;vS=0;y=0.1;repeati=5;repeat=11} @self
+  - effect:sound{s=block.fire.extinguish;volume=1;pitch=1} @self
+  - delay 60
+  - effect:sound{s=entity.generic.explode;volume=1;pitch=0.9} @self
+  - effect:sound{s=block.bubble_column.whirlpool_ambient;volume=1;pitch=1;delay=1} @self
+  - effect:particlering{particle=sneeze;radius=2;points=25;amount=1;hS=0;vS=0;y=0.1} @self
+  - effect:particlering{particle=sneeze;radius=3;points=25;amount=1;hS=0;vS=0;y=0.1;delay=1} @self
+  - effect:particlering{particle=sneeze;radius=4;points=25;amount=1;hS=0;vS=0;y=0.1;delay=2} @self
+  - effect:particlering{particle=sneeze;radius=5;points=25;amount=1;hS=0;vS=0;y=0.1;delay=3} @self
+  - effect:particlering{particle=sneeze;radius=6;points=25;amount=1;hS=0;vS=0;y=0.1;delay=4} @self
+  - effect:particlering{particle=sneeze;radius=7;points=25;amount=1;hS=0;vS=0;y=0.1;delay=5} @self
+  - effect:particlering{particle=sneeze;radius=8;points=25;amount=1;hS=0;vS=0;y=0.1;delay=6} @self
+  - potion{type=POISON;duration=120;level=1;hasParticles=false} @EIR{r=6}
+  - totem{md=80;oT=Barrel_Poison_TICK;hnp=true;hp=true;hR=1;vR=1;i=10} @selflocation
+  - partvisibility{p=body;v=false} @self
+  - remove{delay=87} @self
+  
+Barrel_Poison_TICK:
+  Skills:
+  - effect:particles{particle=sneeze;amount=80;hS=3;vS=0.1;y=-0.5;speed=0;forwardOffset=0;sideOffset=0} @origin
+  - potion{type=POISON;duration=120;level=1;hasParticles=false} @EntitiesNearOrigin{r=6}
+
+# 5119CTUQMPW3H1F87U8SSI6TQHYHQIIH

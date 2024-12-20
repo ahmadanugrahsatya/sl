@@ -1,0 +1,149 @@
+Satan_Strike:
+  Cooldown: 0.1
+  Conditions:
+  - crouching false
+  Skills:
+  - randomskill{skills=Satan_Strike_1,Satan_Strike_2,Satan_Strike_3}
+
+Satan_Strike_1:
+  Conditions:
+  - hasaurastacks{auraName=Satan_Strike_Stack;stacks=1} false
+  - hasaurastacks{auraName=Satan_Strike_Stack;stacks=2} false
+  - hasaurastacks{auraName=Soul_Strike_1} false
+  - hasaurastacks{auraName=Soul_Strike_2} false
+  - hasaurastacks{auraName=Soul_Strike_3} false
+  Skills:
+  - Aura{auraName=Satan_Strike_Stack;duration=120;maxStacks=2;delay=1} @self
+  - effect:sound{s=warrior_sounds:samus.warrior_slash;volume=1;pitch=1} @self
+  - SudoSkill{s=Wrath_Strike_1;setcasterastrigger=true} @MIR{r=2;t=Spirit_Guardian;target=armorstands}
+  - totem{md=2;c=1;oH=Satan_Strike_DAMAGE;hnp=true;hp=true;hR=2;vR=1;i=1} @forward{f=3}
+  - summon{type=Brutal_Strike_Evo_1;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=7;y=0.3;sideOffset=0.5}
+  
+Satan_Strike_2:
+  Conditions:
+  - hasaurastacks{auraName=Satan_Strike_Stack;stacks=1} true
+  - hasaurastacks{auraName=Satan_Strike_Stack;stacks=2} false
+  - hasaurastacks{auraName=Soul_Strike_2} false
+  - hasaurastacks{auraName=Soul_Strike_3} false
+  Skills:
+  - Aura{auraName=Satan_Strike_Stack;duration=120;maxStacks=2;delay=1} @self
+  - effect:sound{s=warrior_sounds:samus.warrior_slash;volume=1;pitch=1} @self
+  - SudoSkill{s=Wrath_Strike_2;setcasterastrigger=true} @MIR{r=2;t=Spirit_Guardian;target=armorstands}
+  - totem{md=2;c=1;oH=Satan_Strike_DAMAGE;hnp=true;hp=true;hR=2;vR=1;i=1} @forward{f=3}
+  - summon{type=Brutal_Strike_Evo_2;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=7;y=-0.5;sideOffset=-1}
+  
+Satan_Strike_3:
+  Conditions:
+  - hasaurastacks{auraName=Satan_Strike_Stack;stacks=1} false
+  - hasaurastacks{auraName=Satan_Strike_Stack;stacks=2} true
+  - hasaurastacks{auraName=Soul_Strike_1} false
+  - hasaurastacks{auraName=Soul_Strike_3} false
+  Skills:
+  - auraremove{aura=Satan_Strike_Stack;delay=1} @self
+  - effect:sound{s=warrior_sounds:samus.warrior_slash;volume=1;pitch=1} @self
+  - SudoSkill{s=Wrath_Strike_3;setcasterastrigger=true} @MIR{r=2;t=Spirit_Guardian;target=armorstands}
+  - totem{md=2;c=1;oH=Satan_Strike_DAMAGE;hnp=true;hp=true;hR=2;vR=1;i=1} @forward{f=3}
+  - summon{type=Brutal_Strike_Evo_3;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=7;y=0;sideOffset=-0.8}
+  
+Satan_Strike_DAMAGE:
+  Skills:
+  - damage{a=3;pkb=false;hnp=true;hp=true}
+  
+
+Wrath_Strike_1:
+  TargetConditions:
+  - isChild{} true
+  Skills:
+  - state{s=attack1;lo=7} @self
+  - Aura{auraName=Soul_Strike_1;interval=1;duration=25} @self
+  - partvisibility{p=big_slash;v=true;delay=10} @self
+  - partvisibility{p=big_slash;v=false;delay=15} @self
+  - effect:sound{s=summoner_sounds:samus.soul_strike_1;volume=0.8;pitch=1} @self
+  
+Wrath_Strike_2:
+  TargetConditions:
+  - isChild{} true
+  Skills:
+  - state{s=attack2;lo=7} @self
+  - Aura{auraName=Soul_Strike_2;interval=1;duration=25} @self
+  - partvisibility{p=big_slash;v=true;delay=10} @self
+  - partvisibility{p=big_slash;v=false;delay=15} @self
+  - effect:sound{s=summoner_sounds:samus.soul_strike_2;volume=0.8;pitch=1;delay=7} @self
+  
+Wrath_Strike_3:
+  TargetConditions:
+  - isChild{} true
+  Skills:
+  - state{s=attack3;lo=7} @self
+  - Aura{auraName=Soul_Strike_3;interval=1;duration=45} @self
+  - effect:sound{s=summoner_sounds:samus.soul_strike_pierce;volume=0.8;pitch=1;delay=7} @self
+
+lostassets_revenant_src:
+  Skills:
+  - Aura{auraName=lostassets_revenant_st;t=17} @self
+  - effect:sound{s=entity.iron_golem.death;volume=0.4;pitch=0.5} @self
+  - effect:sound{s=entity.wither.spawn;volume=0.2;pitch=1} @self
+  - summon{t=lostassets_revenant_skill2} @Forward{f=0;y=8;sideOffset=0;lockpitch=true}
+  - summon{t=lostassets_revenant_src_3} @Forward{f=10;y=0.0;sideOffset=0;lockpitch=true}
+  - skill{s=lostassets_revenant_src_totem} @forward{a=5;lockpitch=true}
+lostassets_revenant_src_totem:
+  Skills: 
+  - totem{ch=1;onStart=lostassets_revenant_src_dmg;int=1;hR=3;md=1}
+
+lostassets_revenant_src_dmg:
+  Skills:
+  - delay 44
+  - effect:sound{s=entity.zombie_villager.cure;volume=0.2;pitch=0.5} @self
+  - setNoDamageTicks{ticks=0;delay=1} @EntitiesNearOrigin{r=10}
+  - damage{a=10;pkb=false;hnp=true;hp=false} @EntitiesNearOrigin{r=10}
+lostassets_revenant_src_pp:
+  Skills:
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=0;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=45;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=90;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=135;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=180;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=225;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=270;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+  - projectile{onTick=lostassets_revenant_src_effects;g=0;v=40;i=1;hR=1;vR=1;mr=20;hnp=true;hO=315;vO=0;sE=false;sB=false;hs=false;hfs=0;sfo=1;syo=0;tyo=1.5} @Forward{f=15;y=0;lockpitch=true};
+lostassets_revenant_src_effects:
+  Skills:
+  - summon{t=lostassets_revenant_src_1} @origin
+  - summon{t=lostassets_revenant_src_2} @origin
+  - effect:particles{particle=spell_witch;m=water;amount=10;hS=2;vS=1;y=0.6;speed=0;forwardOffset=0;sideOffset=0}
+  - effect:particles{particle=smoke_normal;m=water;amount=5;hS=2;vS=1;y=0.6;speed=0;forwardOffset=0;sideOffset=0}
+
+Wrath:
+  Cooldown: 3
+  Conditions:
+  - crouching false
+  Skills:
+  - lunge{velocity=5;velocityY=0.2} @forward{f=12;y=0.1}
+  - summon{type=Wrath;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0;lockpitch=true}
+  - summon{type=Wrath_rotated;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0;lockpitch=true}
+  - effect:particles{particle=flash;hS=2;vS=1;y=0.6;speed=0;forwardOffset=0;sideOffset=0} @self
+  - summon{type=ground_crack_debris;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - effect:sound{s=wrath_sounds:samus.wrath_dashes;volume=1;pitch=1} @self
+
+
+Wrath_Of_Satan:
+  Conditions:
+  - hasaurastacks{auraName=Wrath_Of_Satan_aura} castinstead Wrath_Of_Satan_SKILL
+  Skills:
+  - Aura{auraName=Wrath_Of_Satan_aura;interval=1;duration=5} @self
+
+Wrath_Of_Satan_SKILL:
+  Cooldown: 15
+  Skills:
+  - summon{type=Wrath;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - summon{type=Wrath_rotated;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - effect:particles{particle=flash;hS=2;vS=1;y=0.6;speed=0;forwardOffset=0;sideOffset=0} @self
+  - summon{type=ground_crack_debris;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=0;y=0}
+  - delay 1
+  - effect:sound{s=wrath_sounds:samus.wrath_of_satan;volume=1;pitch=1} @self
+  - potion{type=DAMAGE_RESISTANCE;duration=60;level=2;hasParticles=false} @self
+  - potion{type=REGENERATION;duration=40;level=2;hasParticles=false} @self
+  
+  - potion{type=SLOW;duration=40;level=50;hasParticles=false}
+  
+  

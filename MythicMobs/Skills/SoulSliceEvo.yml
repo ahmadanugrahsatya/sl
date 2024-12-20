@@ -1,0 +1,216 @@
+Soul_Slice_Evo:
+  Cooldown: 0.5
+  Conditions:
+  - crouching false
+  - hasaura{n=God_Of_Death} castinstead Soul_Slice_Evo2
+  - hasaura{n=ATTACK_CD} false
+  - hasaura{n=Soul_Collector_5_STACKS} cast REMOVEAURASTACK
+  #- hasaura{n=Death_Spin} false
+  Skills:
+  - skill{s=Soul_Slice_Evo_1}
+  - skill{s=Soul_Slice_Evo_2}
+  - skill{s=Soul_Slice_Evo_3}
+  - skill{s=Soul_Slice_Evo_4}
+  
+Soul_Slice_Evo2:
+  Skills:
+  - Aura{auraName=God_Of_Death_ACTIVATE;duration=3} @self
+  
+Soul_Slice_Evo_1:
+  Conditions:
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=1} false
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=2} false
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=3} false
+  Skills:
+  - skill{s=Soul_Collector_STACK} @self
+  - Aura{auraName=Soul_Slice_Evo;duration=200;maxStacks=3;delay=1} @self
+  - effect:sound{s=reaper_sounds:samus.soul_slice_1;volume=0.7;pitch="random(0.8, 1.1)"} @self
+  - totem{md=2;c=1;oH=Soul_Slice_Evo_DAMAGE;hnp=true;hp=true;hR=2;vR=2;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Soul_Slice_Evo_1;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=2.5;y=0.2;sideOffset=0;lockpitch=true}
+  
+Soul_Slice_Evo_2:
+  Conditions:
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=1} true
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=2} false
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=3} false
+  Skills:
+  - skill{s=Soul_Collector_STACK} @self
+  - Aura{auraName=Soul_Slice_Evo;duration=200;maxStacks=3;delay=1} @self
+  - effect:sound{s=reaper_sounds:samus.soul_slice_1;volume=0.7;pitch="random(0.8, 1.1)"} @self
+  - totem{md=2;c=1;oH=Soul_Slice_Evo_DAMAGE;hnp=true;hp=true;hR=2;vR=2;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Soul_Slice_Evo_2;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=2.5;y=-0.6;sideOffset=-0.2;lockpitch=true}
+
+Soul_Slice_Evo_3:
+  Conditions:
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=1} false
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=2} true
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=3} false
+  - onground true
+  Skills:
+  - skill{s=Soul_Collector_STACK} @self
+  - lunge{velocity=0.4;velocityY=0.7} @forward{f=0;y=5;lockpitch=true}
+  - onDamaged{auraName=landresist;d=20;cE=true;damageMods="FALL 0"} @self
+  - Aura{auraName=Soul_Slice_Evo;duration=200;maxStacks=3;delay=1} @self
+  - effect:sound{s=reaper_sounds:samus.soul_slice_2;volume=0.7;pitch="random(0.8, 1.1)"} @self
+  - totem{md=2;c=1;oH=Soul_Slice_Evo_3_DAMAGE;hnp=true;hp=true;hR=2;vR=2;i=1} @forward{f=1;lockpitch=true}
+  - summon{type=Soul_Slice_Evo_4;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=2.5;y=0;sideOffset=-0.85;lockpitch=true}
+  
+Soul_Slice_Evo_4:
+  Conditions:
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=1} false
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=2} false
+  - hasaurastacks{auraName=Soul_Slice_Evo;stacks=3} true
+  Skills:
+  - skill{s=Soul_Collector_STACK} @self
+  - lunge{velocity=0.6;velocityY=-1.4} @forward{f=0;y=-5;lockpitch=true}
+  - onDamaged{auraName=landresist;d=20;cE=true;damageMods="FALL 0"} @self
+  - auraremove{aura=Soul_Slice_Evo;delay=1} @self
+  - effect:sound{s=reaper_sounds:samus.soul_slice_2;volume=0.7;pitch="random(0.8, 1.1)"} @self
+  - totem{md=2;c=1;oH=Soul_Slice_Evo_4_DAMAGE;hnp=true;hp=true;hR=2;vR=2;i=1} @forward{f=1;lockpitch=true}
+  - summon{delay=3;type=Soul_Slice_Evo_3;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=2.5;y=0;sideOffset=0;lockpitch=true}
+  - projectile{delay=4;bulletType=MOB;mob=Soul_Wave;onHit=Soul_Slice_Evo_4_HIT;v=20;i=1;hR=1;vR=1;mr=5;hnp=true;hO=0;sE=false;sB=false;hs=true;hfs=0;syo=1.5;tyo=1.5;sfo=3} @Forward{f=20}
+  - effect:sound{delay=4;s=reaper_sounds:samus.god_of_death_slash;volume=0.7;pitch="random(1.3, 1.5)"} @self
+  
+Soul_Slice_Evo_4_TICK:
+  Skills:
+  - modifyProjectile{trait=VELOCITY;action=MULTIPLY;value=2}
+  
+Soul_Slice_Evo_4_HIT:
+  Skills:
+  - damage{a="<modifier.damage>";delay=1} @EntitiesNearOrigin{r=3.5}
+  - Aura{auraName=ATTACK_CD;duration=3} @self
+  
+Soul_Slice_Evo_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Conditions:
+  - hasaura{n=Soul_Collector_5_STACKS} power 1.2
+  Skills:
+  - damage{a="<modifier.damage>";pkb=true;hnp=true;hp=true;delay=1}
+  - Aura{auraName=ATTACK_CD;duration=3} @self
+
+REMOVEAURASTACK:
+  Skills:
+  - auraremove{aura=Soul_Collector_5_STACKS;delay=2} @self
+  
+  
+Soul_Slice_Evo_3_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Conditions:
+  - hasaura{n=Soul_Collector_5_STACKS} power 1.2
+  Skills:
+  - damage{a="<modifier.damage>";pkb=true;hnp=true;hp=true;delay=1}
+  - throw{velocity=1;velocityY=7;delay=1}
+  - Aura{auraName=ATTACK_CD;duration=3} @self
+  
+  
+  
+Soul_Slice_Evo_4_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Conditions:
+  - hasaura{n=Soul_Collector_5_STACKS} power 1.2
+  Skills:
+  - damage{a="<modifier.damage>";pkb=true;hnp=true;hp=true;delay=1}
+  - throw{velocity=1;velocityY=-9;delay=1}
+  - Aura{auraName=ATTACK_CD;duration=3} @self
+  
+  
+Scythe_Hurl:
+  Cooldown: 10
+  Conditions:
+  - crouching true
+  Skills:
+  - Aura{auraName=SCYTHE_GONE;duration=50;delay=1} @self
+  - projectile{oT=Scythe_Hurl_SHOOT_T;md=20;DeathDelay=6;onEnd=Scythe_Hurl_MISSILE_MISSILE_SUDO;bulletmatchdirection=true;bulletForwardOffset=1;bulletType=MOB;mob=VFX_Bloodborne_Scythe_SPIN;onHit=Scythe_Hurl_SHOOT_DAMAGE_D;drawHitbox=false;v=28;i=1;hR=1;vR=4;mr=20;hnp=true;hO=0;sE=false;sB=false;hs=true;hfs=2;sfo=0.5;syo=1.5;tyo=1.5;bulletYOffset=0} @Forward{f=15;y=0}
+  - projectile{oT=Scythe_Hurl_SHOOT_T;md=20;onHit=Scythe_Hurl_SHOOT_DAMAGE_D;drawHitbox=false;v=28;i=1;hR=1;vR=4;mr=20;hnp=true;hO=0;sE=false;sB=false;hs=true;hfs=2;sfo=-1.5;syo=1.5;tyo=1.5;bulletYOffset=0} @Forward{f=15;y=0}
+
+  #SFX
+  - effect:sound{s=item.trident.riptide_1;volume=0.7;pitch=0.4} @self
+  - effect:sound{s=entity.ender_dragon.flap;volume=0.7;pitch=0.6} @self
+  - sudoskill{s=Scythe_Hurl_Action1;cat=true} @MIR{r=5;t=VFX_Bloodborne_Scythe;target=armorstands;sort=NEAREST}
+Scythe_Hurl_Action1:
+  TriggerConditions:
+  - owner true
+  Skills:
+  - state{s=spawndespawn;speed=1} @self
+  
+Scythe_Hurl_SHOOT_T:
+  Skills:
+  - modifyProjectile{trait=VELOCITY;action=MULTIPLY;value=0.9}
+Scythe_Hurl_SHOOT_DAMAGE_D:
+  Skills:
+  - skill{s=Scythe_Hurl_SHOOT_DAMAGE} @EntitiesNearOrigin{r=6;limit=6;sort=NEAREST}
+Scythe_Hurl_SHOOT_DAMAGE:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  - hasaura{n=Scythe_Hurl_HIT} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - aura{auraName=Scythe_Hurl_HIT;duration=5}
+  - throw{velocity=10;velocityY=0}
+  - damage{a="<modifier.damage> * 0.5";pkb=true;hnp=true;hp=true}
+  - summon{type=Shadow_Cut1;amount=1;radius=0;yRadius=0;onSurface=false}
+  - effect:sound{s=entity.zombie.attack_iron_door;volume=0.6;pitch=1.6}
+  - effect:sound{s=entity.generic.explode;volume=0.4;pitch=1.4}
+  - effect:particles{p=dust_color_transition;color1=#FF0000;color2=#330101;amount=30;hS=0.3;vS=0.7;y=0.9;size=0.4;speed=0}
+  
+  - Aura{auraName=<caster.name>LS;duration=20} @self
+  - sudoskill{s=Scythe_Hurl_HEAL_FX;cat=true}
+Scythe_Hurl_HEAL_FX:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  Skills:
+  - missile{oT=Scythe_Hurl_PROFX;oH=SCYTHE_Surge_PROFXST;in=2;v=17;i=1;hR=1;vR=1;md=100;mr=30;hnp=false;hO=0;sE=true;sB=false;hs=false;hfs=0;syo=1.3;tyo=1.5;HitTargetOnly=true;stopconditions=[- hasaura{n=<trigger.name>LS} true]} @trigger
+Scythe_Hurl_PROFX:
+  Skills:
+  - effect:particles{p=dust_color_transition;color1=#4bb599;color2=#afe4a4;amount=8;hS=0.01;vS=0.01;y=0;size=0.4;speed=0} @origin
+Scythe_Hurl_PROFXST:
+  Skills:
+  - effect:sound{s=entity.witch.drink;volume=0.8;pitch=0.7} @trigger
+  - effect:particles{p=dust_color_transition;color1=#4bb599;color2=#afe4a4;amount=60;hS=0.3;vS=0.7;y=0.9;size=0.45;speed=0} @trigger
+  - Aura{auraName=Scythe_Hurl_REALHEAL;duration=10} @trigger
+Scythe_Hurl_REALHEAL:
+  Skills:
+  - heal{a="<modifier.heal> * 0.5"} @self
+  
+
+Scythe_Hurl_MISSILE_MISSILE_SUDO:
+  Skills:
+  - missile{fO=true;bulletType=MOB;mob=VFX_Bloodborne_Scythe_SPIN_6;onHit=Scythe_Hurl_MISSILE_hit_Back;oT=Scythe_Hurl_MISSILE_MISSILE_SUDO_T;drawHitbox=false;md=100;mr=400;v=2;i=1;hR=1;vR=4;in=2;sE=false;sB=false;hs=true;hfs=2;bulletYOffset=0} @self
+  - missile{fO=true;onHit=Scythe_Hurl_MISSILE_hit_Back;oT=Scythe_Hurl_MISSILE_MISSILE_SUDO_T;drawHitbox=false;md=100;mr=400;v=2;i=1;hR=1;vR=4;in=2;sE=false;sfo=-1;sB=false;hs=true;hfs=2;bulletYOffset=0} @self
+Scythe_Hurl_MISSILE_MISSILE_SUDO_T:
+  Skills:
+  - modifyProjectile{trait=VELOCITY;action=MULTIPLY;value=1.15}
+Scythe_Hurl_MISSILE_hit_Back:
+  TargetConditions:
+  - isCaster castinstead Scythe_Hurl_MISSILE_End_Back_REMOVE
+  Skills:
+  - skill{s=Scythe_Hurl_MISSILE_hit_Target2} @EntitiesNearOrigin{r=6;limit=6;sort=NEAREST}
+
+Scythe_Hurl_MISSILE_hit_Target2:
+  TargetConditions:
+  - hasaura{n=Scythe_Hurl_HIT2} false
+  - mmoCanTarget{interaction=OFFENSE_ACTION} true
+  Skills:
+  - aura{auraName=Scythe_Hurl_HIT2;duration=5}
+  - damage{a="<modifier.damage> * 0.5";pkb=true;hnp=true;hp=true}
+  - summon{type=Shadow_Cut1;amount=1;radius=0;yRadius=0;onSurface=false}
+  - effect:sound{s=entity.zombie.attack_iron_door;volume=0.6;pitch=1.6}
+  - effect:sound{s=entity.generic.explode;volume=0.4;pitch=1.4}
+  - effect:particles{particle=redstone;color=#4bb599;amount=15;hS=0.45;vS=0.1;y=0.1;speed=0;forwardOffset=0;sideOffset=0}
+  - effect:particles{particle=redstone;color=#afe4a4;amount=15;hS=0.45;vS=0.1;y=0.1;speed=0;forwardOffset=0;sideOffset=0}
+  - pull{velocity=4.5}
+  
+  - Aura{auraName=<caster.name>LS;duration=20} @self
+  
+Scythe_Hurl_MISSILE_End_Back_REMOVE:
+  TargetConditions:
+  - owner true
+  Skills:
+  - remove @self
+  

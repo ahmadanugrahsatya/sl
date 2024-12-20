@@ -1,0 +1,32 @@
+info:
+  namespace: elitecreatures
+categories:
+  darkflame_animated_weapon_set:
+    enabled: true
+    icon: "elitecreatures:darkflame_animated_weapon_set_axe"
+    name: "Darkflame Animated Weapon Set"
+    permission: "ia.menu.darkflame_animated_weapon_set"
+    items:
+      - "elitecreatures:darkflame_animated_weapon_set_axe"
+      - "elitecreatures:darkflame_animated_weapon_set_bow"
+      - "elitecreatures:darkflame_animated_weapon_set_chest"
+      - "elitecreatures:darkflame_animated_weapon_set_chest_opening"
+      - "elitecreatures:darkflame_animated_weapon_set_fishing_rod"
+      - "elitecreatures:darkflame_animated_weapon_set_gauntlet"
+      - "elitecreatures:darkflame_animated_weapon_set_helmet_2"
+      - "elitecreatures:darkflame_animated_weapon_set_hoe"
+      - "elitecreatures:darkflame_animated_weapon_set_key"
+      - "elitecreatures:darkflame_animated_weapon_set_mace"
+      - "elitecreatures:darkflame_animated_weapon_set_pickaxe"
+      - "elitecreatures:darkflame_animated_weapon_set_shield"
+      - "elitecreatures:darkflame_animated_weapon_set_shovel"
+      - "elitecreatures:darkflame_animated_weapon_set_sickle"
+      - "elitecreatures:darkflame_animated_weapon_set_spear"
+      - "elitecreatures:darkflame_animated_weapon_set_staff"
+      - "elitecreatures:darkflame_animated_weapon_set_sword"
+      - "elitecreatures:darkflame_animated_weapon_set_wing"
+      - "elitecreatures:darkflame_animated_weapon_set_helmet"
+      - "elitecreatures:darkflame_animated_weapon_set_chestplate"
+      - "elitecreatures:darkflame_animated_weapon_set_leggings"
+      - "elitecreatures:darkflame_animated_weapon_set_boots"
+# 1089082226493481686108383
