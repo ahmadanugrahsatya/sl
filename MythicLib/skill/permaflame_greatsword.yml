@@ -1,5 +1,0 @@
-PERMAFLAME_GREATSWORD:
-    mythicmobs-skill-id: Permaflame_Greatsword
-    modifiers:
-    - damage
-    - duration
